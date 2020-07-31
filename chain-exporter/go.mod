@@ -19,6 +19,7 @@ require (
 	github.com/tendermint/tendermint v0.33.3
 	mellium.im/sasl v0.2.1 // indirect
 )
+
 replace github.com/cosmos/ethermint => github.com/landoyjx/ethermint v0.1.1
 
 //replace github.com/tendermint/go-amino => github.com/Robbin-Liu/bnc-go-amino v0.14.1-binance.1
