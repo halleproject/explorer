@@ -84,6 +84,16 @@ func (db *Database) CreateTables() error {
 			return err
 		}
 		_, err = db.Model(schema.Transaction{}).
+			Exec(`CREATE INDEX transaction_from_address_idx ON transaction USING btree(from_address);`)
+		if err != nil {
+			return err
+		}
+		_, err = db.Model(schema.Transaction{}).
+			Exec(`CREATE INDEX transaction_to_address_idx ON transaction USING btree(to_address);`)
+		if err != nil {
+			return err
+		}
+		_, err = db.Model(schema.Transaction{}).
 			Exec(`CREATE INDEX transaction_messages_symbol_idx ON validator USING btree((messages->0->'value'->>'symbol'));`)
 		if err != nil {
 			return err
