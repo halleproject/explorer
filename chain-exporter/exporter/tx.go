@@ -49,7 +49,8 @@ func (ex *Exporter) getTxs(block *tmctypes.ResultBlock) ([]*schema.Transaction, 
 				msgEther := ethtypes.NewMsgEthermint(ethTx.Data.AccountNonce, toAccAddr,
 					sdk.NewIntFromBigInt(ethTx.Data.Amount), ethTx.Data.GasLimit,
 					sdk.NewIntFromBigInt(ethTx.Data.Price), ethTx.Data.Payload, fromAccAddr)
-				msgsBz0, err := ex.cdc.MarshalJSON(msgEther) //ethTx.GetMsgs())
+				msgs := []sdk.Msg{msgEther}
+				msgsBz0, err := ex.cdc.MarshalJSON(msgs) //ethTx.GetMsgs())
 				if err != nil {
 					return nil, err
 				}
