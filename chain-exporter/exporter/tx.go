@@ -35,8 +35,17 @@ func (ex *Exporter) getTxs(block *tmctypes.ResultBlock) ([]*schema.Transaction, 
 				fromAddress = from.String()
 
 				fromAccAddr := sdk.AccAddress(from.Bytes())
-				toAccAddr := sdk.AccAddress(ethTx.To().Bytes())
-				msgEther := ethtypes.NewMsgEthermint(ethTx.Data.AccountNonce, &toAccAddr,
+
+				//to is empty when create contract
+				var toAccAddr *sdk.AccAddress
+				to := ethTx.To()
+				if to != nil {
+					toAddress = ethTx.To().String()
+					newAccAddr := sdk.AccAddress(ethTx.To().Bytes())
+					toAccAddr = &newAccAddr
+				}
+
+				msgEther := ethtypes.NewMsgEthermint(ethTx.Data.AccountNonce, toAccAddr,
 					sdk.NewIntFromBigInt(ethTx.Data.Amount), ethTx.Data.GasLimit,
 					sdk.NewIntFromBigInt(ethTx.Data.Price), ethTx.Data.Payload, fromAccAddr)
 				msgsBz0, err := ex.cdc.MarshalJSON(msgEther) //ethTx.GetMsgs())
@@ -46,7 +55,6 @@ func (ex *Exporter) getTxs(block *tmctypes.ResultBlock) ([]*schema.Transaction, 
 				msgsBz = string(msgsBz0)
 				memo = string(ethTx.Data.Payload)
 
-				toAddress = ethTx.To().String()
 			} else {
 				msgsBz0, err := ex.cdc.MarshalJSON(halleTx.GetMsgs())
 				if err != nil {
