@@ -1,6 +1,7 @@
 package exporter
 
 import (
+	"encoding/hex"
 	"fmt"
 
 	"github.com/chain-exporter/schema"
@@ -53,7 +54,7 @@ func (ex *Exporter) getTxs(block *tmctypes.ResultBlock) ([]*schema.Transaction, 
 					return nil, err
 				}
 				msgsBz = string(msgsBz0)
-				memo = string(ethTx.Data.Payload)
+				memo = hex.EncodeToString(ethTx.Data.Payload)
 
 			} else {
 				msgsBz0, err := ex.cdc.MarshalJSON(halleTx.GetMsgs())
