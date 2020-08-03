@@ -182,6 +182,46 @@ func (db *Database) QueryTxByHash(hash string) (schema.Transaction, error) {
 	return tx, nil
 }
 
+
+// QueryTxsByType queries transactions with tx q_address
+func (db *Database) QueryTxsByAddress(q_address string,  before int, after int, limit int) ([]schema.Transaction, error) {
+	txs := make([]schema.Transaction, 0)
+
+	var err error
+
+	switch {
+	case before > 0:
+		err = db.Model(&txs).
+			Where("(from_address = ? OR to_address=?)  AND id < ?", q_address, q_address, before).
+			Limit(limit).
+			Order("id DESC").
+			Select()
+	case after >= 0:
+		err = db.Model(&txs).
+			Where("(from_address = ? OR to_address=?) AND id > ?", q_address, q_address, after).
+			Limit(limit).
+			Order("id ASC").
+			Select()
+	default:
+		err = db.Model(&txs).
+			Where("(from_address = ? OR to_address=?)  ", q_address, q_address ).
+			Limit(limit).
+			Order("id DESC").
+			Select()
+	}
+
+	if err == pg.ErrNoRows {
+		return txs, fmt.Errorf("no rows in Transaction table: %s", err)
+	}
+
+	if err != nil {
+		return txs, fmt.Errorf("unexpected database error: %s", err)
+	}
+
+	return txs, nil
+}
+
+
 // QueryTxsByType queries transactions with tx type and start and end time
 func (db *Database) QueryTxsByType(txType string, startTime int64, endTime int64, before int, after int, limit int) ([]schema.Transaction, error) {
 	txs := make([]schema.Transaction, 0)

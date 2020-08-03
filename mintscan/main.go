@@ -71,6 +71,7 @@ func main() {
 	getR.HandleFunc("/tokens", handlers.NewToken(l, client, db).GetTokens)
 	getR.HandleFunc("/txs", handlers.NewTransaction(l, client, db).GetTxs)
 	getR.HandleFunc("/txs/{hash}", handlers.NewTransaction(l, client, db).GetTxByHash)
+	getR.HandleFunc("/txs_address", handlers.NewTransaction(l, client, db).GetTxsByAddress)
 
 	postR := r.Methods(http.MethodPost).PathPrefix("/v1").Subrouter()
 	postR.HandleFunc("/txs", handlers.NewTransaction(l, client, db).GetTxsByType)

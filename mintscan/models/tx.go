@@ -37,6 +37,8 @@ type (
 		Height     int64       `json:"height"`
 		Result     bool        `json:"result"`
 		TxHash     string      `json:"tx_hash"`
+		FromAddress     string  `json:"from_address"`
+		ToAddress     string      `json:"to_address"`
 		Messages   []Message   `json:"messages"`
 		Signatures []Signature `json:"signatures"`
 		Memo       string      `json:"memo"`

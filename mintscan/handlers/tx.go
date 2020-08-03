@@ -88,6 +88,8 @@ func (t *Transaction) GetTxs(rw http.ResponseWriter, r *http.Request) {
 	return
 }
 
+
+
 // GetTxByHash returns certain transaction information by its tx hash
 func (t *Transaction) GetTxByHash(rw http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
@@ -108,6 +110,77 @@ func (t *Transaction) GetTxByHash(rw http.ResponseWriter, r *http.Request) {
 	utils.Respond(rw, result)
 	return
 }
+
+//GetTxsByAddress returns transactions with query address
+func (t *Transaction) GetTxsByAddress(rw http.ResponseWriter, r *http.Request) {
+	before := int(0)
+	after := int(-1)
+	limit := int(100)
+
+	if len(r.URL.Query()["before"]) > 0 {
+		before, _ = strconv.Atoi(r.URL.Query()["before"][0])
+	}
+
+	if len(r.URL.Query()["after"]) > 0 {
+		after, _ = strconv.Atoi(r.URL.Query()["after"][0])
+	}
+
+	if len(r.URL.Query()["limit"]) > 0 {
+		limit, _ = strconv.Atoi(r.URL.Query()["limit"][0])
+	}
+
+	if limit > 100 {
+		errors.ErrOverMaxLimit(rw, http.StatusUnauthorized)
+		return
+	}
+
+	var q_address string
+	if len(r.URL.Query()["address"]) > 0 {
+		q_address = r.URL.Query()["address"][0]
+	} else {
+		//address 为必填项
+		errors.ErrInvalidFormat(rw, http.StatusBadRequest)
+		return
+	}
+
+
+	txs, err := t.db.QueryTxsByAddress(q_address, before, after, limit)
+
+	//txs, err := t.db.QueryTxsByAddress(before, after, limit)
+	if err != nil {
+		t.l.Printf("failed to query txs: %s\n", err)
+	}
+
+	if len(txs) <= 0 {
+		utils.Respond(rw, models.ResultTxs{})
+		return
+	}
+
+	result, err := t.setTxs(txs)
+	if err != nil {
+		t.l.Printf("failed to set txs: %s\n", err)
+	}
+
+	totalTxsNum, err := t.db.CountTotalTxsNum()
+	if err != nil {
+		t.l.Printf("failed to query total number of txs: %s\n", err)
+	}
+
+	// Handling before and after since their ordering data is different
+	if after >= 0 {
+		result.Paging.Total = totalTxsNum
+		result.Paging.Before = result.Data[0].ID
+		result.Paging.After = result.Data[len(result.Data)-1].ID
+	} else {
+		result.Paging.Total = totalTxsNum
+		result.Paging.Before = result.Data[len(result.Data)-1].ID
+		result.Paging.After = result.Data[0].ID
+	}
+
+	utils.Respond(rw, result)
+	return
+}
+
 
 // GetTxsByType returns transactions based upon the request params
 func (t *Transaction) GetTxsByType(rw http.ResponseWriter, r *http.Request) {
@@ -252,6 +325,8 @@ func (t *Transaction) setTxs(txs []schema.Transaction) (*models.ResultTxs, error
 			Height:     tx.Height,
 			Result:     txResult,
 			TxHash:     tx.TxHash,
+			FromAddress:     tx.FromAddress,
+			ToAddress:     tx.ToAddress,
 			Messages:   msgs,
 			Signatures: sigs,
 			Memo:       tx.Memo,
