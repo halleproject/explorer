@@ -33,17 +33,16 @@ func (ex *Exporter) getTxs(block *tmctypes.ResultBlock) ([]*schema.Transaction, 
 					return nil, err
 				}
 				from, _ := ethTx.VerifySig(ethTx.ChainID())
-				fromAddress = from.String()
-
 				fromAccAddr := sdk.AccAddress(from.Bytes())
+				fromAddress = fromAccAddr.String()
 
 				//to is empty when create contract
 				var toAccAddr *sdk.AccAddress
 				to := ethTx.To()
 				if to != nil {
-					toAddress = ethTx.To().String()
 					newAccAddr := sdk.AccAddress(ethTx.To().Bytes())
 					toAccAddr = &newAccAddr
+					toAddress = newAccAddr.String()
 				}
 
 				msgEther := ethtypes.NewMsgEthermint(ethTx.Data.AccountNonce, toAccAddr,
