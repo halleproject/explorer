@@ -138,7 +138,7 @@ func (ex *Exporter) process(height int64) error {
 	}
 
 	//@TODO 需要重新组合 多个接口输出的详细的Validators 数据
-	resultValidators, err := ex.getValidators(vals, valSet)
+	resultValidators, err := ex.getValidators(vals)
 	if err != nil {
 		return fmt.Errorf("failed to get validators: %s", err)
 	}

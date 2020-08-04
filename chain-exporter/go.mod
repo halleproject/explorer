@@ -14,9 +14,11 @@ require (
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/viper v1.6.3
+	github.com/stretchr/testify v1.5.1
 	github.com/tendermint/go-amino v0.15.1
 	//github.com/tendermint/tendermint v0.32.8
 	github.com/tendermint/tendermint v0.33.3
+	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
 	mellium.im/sasl v0.2.1 // indirect
 )
 

@@ -1,27 +1,36 @@
 package exporter
 
 import (
+	"encoding/json"
 	"fmt"
-	sdk "github.com/cosmos/cosmos-sdk/types"
-	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 	"strconv"
 
 	"github.com/chain-exporter/schema"
 	"github.com/chain-exporter/types"
+	"github.com/chain-exporter/utils"
+	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
 // getValidators parses validators information and wrap into Precommit schema struct
-func (ex *Exporter) getValidators(vals []*types.Validator, valSet *tmctypes.ResultValidators) ([]*schema.Validator, error) {
+func (ex *Exporter) getValidators(vals []*types.Validator) ([]*schema.Validator, error) {
 	validators := make([]*schema.Validator, 0)
 
 	// Looping through validators and insert them if not already exists in database
 	for _, val := range vals {
 		if len(val.ConsensusAddress) == 0 {
-			consensusAddress := sdk.ConsAddress(val.ConsensusPubKey)
-			val.ConsensusAddress = consensusAddress.String()
+			var bech32Pubkey string
+			err := json.Unmarshal(val.ConsensusPubKey, &bech32Pubkey)
+			if err != nil {
+				fmt.Errorf("failed to get ConsensusPubKey: %s", err)
+				continue
+			}
+			val.ConsensusAddress = utils.GenHexAddrFromPubKey(bech32Pubkey)
+		}
+		if len(val.AccountAddress) == 0 {
+			val.AccountAddress = utils.Convert(sdk.GetConfig().GetBech32AccountAddrPrefix(), val.OperatorAddress)
+			//fmt.Println(sdk.GetConfig().GetBech32AccountAddrPrefix(), val.AccountAddress)
 		}
 		ok, err := ex.db.ExistValidator(val.ConsensusAddress)
-		//ok, err := ex.db.ExistValidator(val.OperatorAddress)
 		if !ok {
 
 			tempVal := &schema.Validator{
