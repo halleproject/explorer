@@ -59,7 +59,7 @@ func (ex *Exporter) Start() error {
 				ex.l.Printf("error - sync blockchain: %v\n", err)
 			}
 			ex.l.Println("finish - sync blockchain")
-			time.Sleep(time.Second*1)
+			time.Sleep(time.Second * 1)
 		}
 	}()
 
@@ -109,21 +109,16 @@ func (ex *Exporter) process(height int64) error {
 		return fmt.Errorf("failed to query block using rpc client: %s", err)
 	}
 
-
-
 	valSet, err := ex.client.ValidatorSet(block.Block.LastCommit.Height)
 	if err != nil {
 		return fmt.Errorf("failed to query validator set using rpc client: %s", err)
 	}
 	//fmt.Println(valSet)
 
-
 	vals, err := ex.client.Validators()
 	if err != nil {
 		return fmt.Errorf("failed to query validators using rpc client: %s", err)
 	}
-	fmt.Println(vals)
-
 
 	resultBlock, err := ex.getBlock(block) // TODO: Reward Fees Calculation
 	if err != nil {
@@ -135,8 +130,6 @@ func (ex *Exporter) process(height int64) error {
 		return fmt.Errorf("failed to get transactions: %s", err)
 	}
 
-
-
 	//@TODO dabin PreCommit结构变了了待处理
 	resultPreCommits, err := ex.getPreCommits(block.Block.LastCommit, valSet)
 	if err != nil {
@@ -145,12 +138,12 @@ func (ex *Exporter) process(height int64) error {
 	}
 
 	//@TODO 需要重新组合 多个接口输出的详细的Validators 数据
-	//resultValidators, err := ex.getValidators(vals,valSet)
-	//if err != nil {
-	//	return fmt.Errorf("failed to get validators: %s", err)
-	//}
+	resultValidators, err := ex.getValidators(vals, valSet)
+	if err != nil {
+		return fmt.Errorf("failed to get validators: %s", err)
+	}
 
-	err = ex.db.InsertExportedData(resultBlock, resultTxs, nil, resultPreCommits) //@todo 待修改
+	err = ex.db.InsertExportedData(resultBlock, resultTxs, resultValidators, resultPreCommits) //@todo 待修改
 	if err != nil {
 		return fmt.Errorf("failed to insert exporterd data: %s", err)
 	}

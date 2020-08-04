@@ -85,8 +85,8 @@ func (c Client) Txs(block *tmctypes.ResultBlock) ([]*rpc.ResultTx, error) {
 		if err != nil {
 			return nil, err
 		}
-		fmt.Println("-----rpcClient.Tx()--------");
-        fmt.Println(tx);
+		fmt.Println("-----rpcClient.Tx()--------")
+		fmt.Println(tx)
 		txs[i] = tx
 	}
 
@@ -102,7 +102,7 @@ func (c Client) ValidatorSet(height int64) (*tmctypes.ResultValidators, error) {
 // Validators returns validators detail information in Tendemrint validators in active chain
 // An error returns if the query fails.
 func (c Client) Validators() ([]*types.Validator, error) {
-	resp, err := c.apiClient.R().Get("staking/validators")
+	resp, err := c.apiClient.R().Get("/staking/validators")
 	//resp, err := c.apiClient.R().Get("/validators")
 	if err != nil {
 		return nil, err
@@ -111,7 +111,7 @@ func (c Client) Validators() ([]*types.Validator, error) {
 	fmt.Printf("\nResponse Body: %v", resp)
 
 	///var vals []*types.Validator
-	var vals  *types.HttpBody
+	var vals *types.HttpBody
 
 	err = json.Unmarshal(resp.Body(), &vals)
 	if err != nil {
