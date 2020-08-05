@@ -182,9 +182,8 @@ func (db *Database) QueryTxByHash(hash string) (schema.Transaction, error) {
 	return tx, nil
 }
 
-
 // QueryTxsByType queries transactions with tx q_address
-func (db *Database) QueryTxsByAddress(q_address string,  before int, after int, limit int) ([]schema.Transaction, error) {
+func (db *Database) QueryTxsByAddress(q_address string, before int, after int, limit int) ([]schema.Transaction, error) {
 	txs := make([]schema.Transaction, 0)
 
 	var err error
@@ -204,7 +203,7 @@ func (db *Database) QueryTxsByAddress(q_address string,  before int, after int, 
 			Select()
 	default:
 		err = db.Model(&txs).
-			Where("(from_address = ? OR to_address=?)  ", q_address, q_address ).
+			Where("(from_address = ? OR to_address=?)  ", q_address, q_address).
 			Limit(limit).
 			Order("id DESC").
 			Select()
@@ -220,7 +219,6 @@ func (db *Database) QueryTxsByAddress(q_address string,  before int, after int, 
 
 	return txs, nil
 }
-
 
 // QueryTxsByType queries transactions with tx type and start and end time
 func (db *Database) QueryTxsByType(txType string, startTime int64, endTime int64, before int, after int, limit int) ([]schema.Transaction, error) {
@@ -413,4 +411,23 @@ func (db *Database) QueryValidatorByMoniker(address string) (schema.Validator, e
 	}
 
 	return val, nil
+}
+
+// QueryTwoAuthByID queries TwoAuth in a TwoAuth set saved in database
+func (db *Database) QueryTwoAuthByID(id int64) (*schema.TwoAuth, error) {
+	var ta schema.TwoAuth
+
+	err := db.Model(&ta).
+		Where("ID = ?", id).
+		Select()
+
+	if err == pg.ErrNoRows {
+		return &ta, fmt.Errorf("no rows in twoauth table: %s", err)
+	}
+
+	if err != nil {
+		return &ta, fmt.Errorf("unexpected database error: %s", err)
+	}
+
+	return &ta, nil
 }
