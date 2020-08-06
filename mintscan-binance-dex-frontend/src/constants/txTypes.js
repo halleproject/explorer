@@ -1,7 +1,7 @@
 export default Object.freeze({
 	//  COSMOS
 	COSMOS: {
-		SEND: "cosmos-sdk/Send",
+		SEND: "cosmos-sdk/MsgSend",
 		PROPOSAL_SUBMIT: "cosmos-sdk/MsgSubmitProposal",
 		DEPOSIT: "cosmos-sdk/MsgDeposit",
 		VOTE: "cosmos-sdk/MsgVote",
@@ -10,6 +10,9 @@ export default Object.freeze({
 		VALIDATOR_PROPOSAL: "cosmos-sdk/MsgCreateValidatorProposal",
 	},
 
+	WEB3: {
+		SEND: "ethermint/MsgEthermint",
+	},
 	//  DEX
 	DEX: {
 		ORDER_NEW: "dex/NewOrder",

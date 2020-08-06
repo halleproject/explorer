@@ -47,37 +47,37 @@ export default function(props) {
 						<NavLink to='/' onClick={toMain}>
 							<img src={logo} alt={"logo"} />
 						</NavLink>
-						<div className={cx("select-wrapper")}>
-							<div className={cx("net-select-wrapper")}>
-								<button className={cx("select-btn")} onClick={() => setOpen(v => !v)}>
-									<div className={cx("curr-net-wrapper")}>
-										<div className={cx("net-icon")} style={{backgroundImage: `url(${binance})`}} />
-										{consts.NETWORK.BINANCE}
-									</div>
-									<img className={cx("arrow-icon", {upsideDown: open})} src={dropdownArrow} alt={"none"} />
-								</button>
-								<div className={cx("select-item-list", {hide: !open})}>
-									{_.map(avaliableNetworks, (network, idx) => (
-										<div className={cx("select-item")} key={network} onClick={() => handleChange(network)}>
-											<div className={cx("net-icon")} style={{backgroundImage: `url(${tokenImg[idx]}`}} />
-											{(() => {
-												switch (network) {
-													case "iris":
-														return consts.NETWORK.IRIS;
-													case "kava":
-														return consts.NETWORK.KAVA;
-													case "binance":
-														return consts.NETWORK.BINANCE;
-													default:
-														return consts.NETWORK.COSMOS;
-												}
-											})()}
-										</div>
-									))}
-								</div>
-							</div>
-							<SearchArea propCx={cx} dropdownStyle={{position: "fixed", width: "459px"}} />
-						</div>
+						{/*<div className={cx("select-wrapper")}>*/}
+						{/*	<div className={cx("net-select-wrapper")}>*/}
+						{/*		<button className={cx("select-btn")} onClick={() => setOpen(v => !v)}>*/}
+						{/*			<div className={cx("curr-net-wrapper")}>*/}
+						{/*				<div className={cx("net-icon")} style={{backgroundImage: `url(${binance})`}} />*/}
+						{/*				{consts.NETWORK.BINANCE}*/}
+						{/*			</div>*/}
+						{/*			<img className={cx("arrow-icon", {upsideDown: open})} src={dropdownArrow} alt={"none"} />*/}
+						{/*		</button>*/}
+						{/*		<div className={cx("select-item-list", {hide: !open})}>*/}
+						{/*			{_.map(avaliableNetworks, (network, idx) => (*/}
+						{/*				<div className={cx("select-item")} key={network} onClick={() => handleChange(network)}>*/}
+						{/*					<div className={cx("net-icon")} style={{backgroundImage: `url(${tokenImg[idx]}`}} />*/}
+						{/*					{(() => {*/}
+						{/*						switch (network) {*/}
+						{/*							case "iris":*/}
+						{/*								return consts.NETWORK.IRIS;*/}
+						{/*							case "kava":*/}
+						{/*								return consts.NETWORK.KAVA;*/}
+						{/*							case "binance":*/}
+						{/*								return consts.NETWORK.BINANCE;*/}
+						{/*							default:*/}
+						{/*								return consts.NETWORK.COSMOS;*/}
+						{/*						}*/}
+						{/*					})()}*/}
+						{/*				</div>*/}
+						{/*			))}*/}
+						{/*		</div>*/}
+						{/*	</div>*/}
+						{/*	<SearchArea propCx={cx} dropdownStyle={{position: "fixed", width: "459px"}} />*/}
+						{/*</div>*/}
 					</Toolbar>
 				</div>
 			);

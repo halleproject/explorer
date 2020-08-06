@@ -45,14 +45,14 @@ const cardData = Object.freeze([
 export default function(props) {
 	return (
 		<div className={cx("DashboardContent-wrapper")}>
-			<div className={cx("PriceGraphClickable-wrapper")}>
-				<div className={cx("Card", "PriceGraph-wrapper")}>
-					<PriceDisplay />
-					<GraphDisplay />
-					<LinkCardInside />
-				</div>
-				<LinkCard />
-			</div>
+			{/*<div className={cx("PriceGraphClickable-wrapper")}>*/}
+			{/*	<div className={cx("Card", "PriceGraph-wrapper")}>*/}
+			{/*		<PriceDisplay />*/}
+			{/*		<GraphDisplay />*/}
+			{/*		<LinkCardInside />*/}
+			{/*	</div>*/}
+			{/*	<LinkCard />*/}
+			{/*</div>*/}
 			<div className={cx("BlockTx-wrapper")}>
 				<BlocksDisplay />
 				<div className={cx("CardFixed")}>
