@@ -185,6 +185,7 @@ func (c Client) Asset(assetName string) (models.Asset, error) {
 
 // Assets returns information of all assets existing in an active chain
 func (c Client) Assets(page int, rows int) (models.AssetInfo, error) {
+	return models.AssetInfo{}, nil //todo zxl
 	queryStr := "/assets?page=" + strconv.Itoa(page) + "&rows=" + strconv.Itoa(rows)
 	resp, err := c.explorerClient.R().Get(queryStr)
 	if err != nil {
@@ -236,12 +237,17 @@ func (c Client) AssetTxs(txAsset string, page int, rows int) (models.AssetTxs, e
 
 // Account returns account information given an account address
 func (c Client) Account(address string) (models.Account, error) {
-	resp, err := c.apiClient.R().Get("/account/" + address)
+	fmt.Printf("=================Client Account 1===============\n")
+
+	resp, err := c.apiClient.R().Get("/auth/accounts/" + address)
 	if err != nil {
 		return models.Account{}, err
 	}
 
 	var account models.Account
+	fmt.Printf(string(resp.Body()))
+	fmt.Printf("=================Client Account 2===============\n")
+
 	err = json.Unmarshal(resp.Body(), &account)
 	if err != nil {
 		return models.Account{}, err
