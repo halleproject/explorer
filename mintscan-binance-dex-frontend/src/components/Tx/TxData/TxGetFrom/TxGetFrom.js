@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import {_, refineAddress} from "src/lib/scripts";
-import {txCheckFUBM, txCheckHTLT, txCheckOrder, txCheckSend} from "../TxCase";
+import {txCheckFUBM, txCheckHTLT, txCheckOrder, txCheckSend, txCheckWEB3Send} from "../TxCase";
 import {NavLink} from "react-router-dom";
 
 import txTypes from "src/constants/txTypes";
@@ -18,7 +18,8 @@ const aBunch = [
 
 export default function({type, txData, value, cx}) {
 	let from = null;
-	if (txCheckSend(type)) from = refineAddress(value?.inputs?.[0]?.address);
+	if (txCheckSend(type)) from = refineAddress(value?.from_address);
+	else if (txCheckWEB3Send(type)) from = refineAddress(value?.from);
 	else if (txCheckOrder(type)) from = refineAddress(value.sender);
 	else if (txCheckFUBM(type) || _.find(aBunch, v => v === type)) from = refineAddress(value.from);
 	else if (txTypes.COSMOS.VOTE === type) from = refineAddress(value.voter);

@@ -15,7 +15,7 @@ import consts from "src/constants/consts";
 import txTypes from "src/constants/txTypes";
 import getTxType from "src/constants/getTxType";
 //  components
-import {txCheckFUBM, txCheckOrder, txCheckSend, txGetSide, txGetTimeInforce, txCheckHTLT} from "src/components/Tx/TxData/TxCase";
+import {txCheckFUBM, txCheckOrder, txCheckSend, txCheckWEB3Send, txGetSide, txGetTimeInforce, txCheckHTLT} from "src/components/Tx/TxData/TxCase";
 import {Fade, Tooltip} from "@material-ui/core";
 import InfoRow from "src/components/common/InfoRow/InfoRow";
 import TxGetFrom from "src/components/Tx/TxData/TxGetFrom/TxGetFrom";
@@ -69,19 +69,19 @@ export default function({msg, txData}) {
 									<ul className={cx("To-wrapper")}>
 										<li className={cx("label")}>To</li>
 										<li className={cx("value")}>
-											{_.map(value.outputs, v => (
-												<NavLink key={v.address} className={cx("blueColor")} to={`/account/${refineAddress(v.address)}`}>
-													<DisplayLongString inputString={refineAddress(v.address)} />
+											{
+												<NavLink key={value.to_address} className={cx("blueColor")} to={`/account/${refineAddress(value.to_address)}`}>
+													<DisplayLongString inputString={refineAddress(value.to_address)} />
 												</NavLink>
-											))}
+											}
 										</li>
 									</ul>
 									<ul className={cx("value-wrapper")}>
 										<li className={cx("label")}>Value</li>
 										<li className={cx("value")}>
-											{_.map(value.outputs, v => (
-												<span key={v.address}>
-													{divide(v?.coins?.[0]?.amount, consts.NUM.BASE_MULT)} {v?.coins?.[0]?.denom}
+											{_.map(value.amount, v => (
+												<span key={value.to_address}>
+													{divide(v.amount, consts.NUM.BASE_MULT)} {v.denom}
 												</span>
 											))}
 										</li>
@@ -93,6 +93,41 @@ export default function({msg, txData}) {
 				) : (
 					undefined
 				)}
+
+				{txCheckWEB3Send(type) ? (
+					<>
+						<div className={cx("toValue-row")}>
+							<div className={cx("row-label")}>To / Value</div>
+							<div className={cx("row-content-wrapper")}>
+								<div className={cx("row-content")}>
+									<ul className={cx("To-wrapper")}>
+										<li className={cx("label")}>To</li>
+										<li className={cx("value")}>
+											{
+												<NavLink key={value.to} className={cx("blueColor")} to={`/account/${refineAddress(value.to)}`}>
+													<DisplayLongString inputString={refineAddress(value.to)} />
+												</NavLink>
+											}
+										</li>
+									</ul>
+									<ul className={cx("value-wrapper")}>
+										<li className={cx("label")}>Value</li>
+										<li className={cx("value")}>
+											{
+												<span key={value.address}>
+													{divide(value?.value, consts.NUM.BASE_MULT)} {consts.DENOM}
+												</span>
+											}
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</>
+				) : (
+					undefined
+				)}
+
 				{txCheckFUBM(type) ? (
 					<>
 						<InfoRow label='Value'>

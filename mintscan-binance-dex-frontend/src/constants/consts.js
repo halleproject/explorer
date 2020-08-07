@@ -14,9 +14,10 @@ export default Object.freeze({
 	// 	BASE: "https://api.coingecko.com/api/v3",
 	// 	GET_MARKET_CHART_RANGE: (id = "BNB", from, to) => `/coins/${id}/market_chart/range?vs_currency=usd&from=${from}&to=${to}`,
 	// },
+	DENOM: "hale",
 	NUM: {
-		BASE_MULT: 100000000,
-		DEFAULT_DECIMALS: 8,
+		BASE_MULT: 1000000000000000000,
+		DEFAULT_DECIMALS: 18,
 		PAGE_SIZE: 20,
 
 		SPARE_PAGE_CNT: 2, //  amount of pages to preload in pagination

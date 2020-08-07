@@ -2,7 +2,7 @@ import {_} from "src/lib/scripts";
 import txTypes from "src/constants/txTypes";
 
 // const {COSMOS, DEX, TOKENS, MISC} = txTypes;
-const {COSMOS, DEX, TOKENS} = txTypes;
+const {COSMOS, WEB3, DEX, TOKENS} = txTypes;
 export const txGetSide = Object.freeze([null, "BUY", "SELL"]);
 export const txGetTimeInforce = Object.freeze([null, "GTE", null, "IOC"]);
 //  I think it was only limit that is being used
@@ -10,6 +10,7 @@ export const txGetTimeInforce = Object.freeze([null, "GTE", null, "IOC"]);
 
 export const txCheckOrder = txType => _.find([DEX.ORDER_NEW, DEX.ORDER_CANCEL], v => v === txType) !== undefined;
 export const txCheckSend = txType => _.find([COSMOS.SEND], v => v === txType) !== undefined;
+export const txCheckWEB3Send = txType => _.find([WEB3.SEND], v => v === txType) !== undefined;
 export const txCheckFUBM = txType => _.find([TOKENS.BURN, TOKENS.MINT, TOKENS.FREEZE, TOKENS.UNFREEZE], v => v === txType) !== undefined;
 export const txCheckHTLT = txType => _.find([TOKENS.HTLT], v => v === txType) !== undefined;
 //  last deposit tx was on 19/10/28 so not searchable anyway
