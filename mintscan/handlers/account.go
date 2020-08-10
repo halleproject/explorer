@@ -148,7 +148,7 @@ func (a *Account) GetAccountTxs(rw http.ResponseWriter, r *http.Request) {
 	//	TxArray: txArray,
 	//}
 
-	txs, err := a.db.QueryTxsByAddress(address, 0, (page-1)*rows, rows)
+	txs, err := a.db.QueryTxsByAddress(address, 0, -1, rows)
 	if err != nil {
 		a.l.Printf("failed to query txs: %s\n", err)
 	}
