@@ -21,7 +21,7 @@ export default function Account(props) {
 	const [state1, , setUrl1] = useFetch("");
 	const [state2, , setUrl2] = useFetch(`${baseURL}${account}`);
 	const [txData, assetData] = [
-		state1.data?.txArray && !state1.loading ? state1.data.txArray : consts.DEFAULT_ARRAY,
+		state1.data?.data && !state1.loading ? state1.data.data : consts.DEFAULT_ARRAY,
 		state2.data && !state2.loading ? state2.data : consts.DEFAULT_ARRAY,
 	];
 
@@ -94,6 +94,6 @@ export default function Account(props) {
 		),
 		[displayAddress, assetTxs, state1.error, state2.error]
 	);
-	if ((!state2.loading && (assetData?.address === "" || assetData?.error_code)) || account === "notFound") return <NotFound />;
+	// if ((!state2.loading && (assetData?.address === "" || assetData?.error_code)) || account === "notFound") return <NotFound />;
 	return render;
 }

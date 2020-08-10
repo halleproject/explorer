@@ -68,16 +68,16 @@ export default function({data, account = ""}) {
 		() => (
 			<TableRow className={cx("TxTableRow-wrapper")} hover={true} key={data.id}>
 				<TableCell className={cx("tablePointerCell", "txHash", "text")} component='th' scope='row'>
-					{data.txHash ? (
-						<NavLink className={cx("blueColor")} to={`/txs/${data.txHash}`}>
-							{reduceString(data.txHash, 6, 6)}
+					{data.tx_hash ? (
+						<NavLink className={cx("blueColor")} to={`/txs/${data.tx_hash}`}>
+							{reduceString(data.tx_hash, 6, 6)}
 						</NavLink>
 					) : (
 						<Skeleton />
 					)}
 				</TableCell>
 				<TableCell className={cx("tableCell", "text", "padding-right10", "padding-left10")}>
-					{data.txHash ? pickData(data, cx, "txType", account) : undefined}
+					{data.tx_hash ? pickData(data, cx, "txType", account) : undefined}
 				</TableCell>
 				<TableCell className={cx("tableCell", "text", "addrWidth", "padding-right10")} align='left'>
 					{pickData(data, cx, "address", account)}
@@ -89,16 +89,16 @@ export default function({data, account = ""}) {
 					{pickData(data, cx, "Currency", account)}
 				</TableCell>
 				<TableCell className={cx("tableCell", "padding-left10")} align='right'>
-					{data.blockHeight ? (
-						<NavLink className={cx("blueColor", "text")} to={`/blocks/${data.blockHeight}`}>
-							{data.blockHeight}
+					{data.height ? (
+						<NavLink className={cx("blueColor", "text")} to={`/blocks/${data.height}`}>
+							{data.height}
 						</NavLink>
 					) : (
 						<Skeleton />
 					)}
 				</TableCell>
 				<TableCell className={cx("tableCell", "text", "padding-left10")} align='right'>
-					{data.timeStamp ? setAgoTime(data.timeStamp) : <Skeleton />}
+					{data.timestamp ? setAgoTime(data.timestamp) : <Skeleton />}
 				</TableCell>
 			</TableRow>
 		),
