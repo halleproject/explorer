@@ -74,7 +74,8 @@ export default function Account(props) {
 		[fetchAccountTxs, prices, assetData, txData, account]
 	);
 
-	const displayAddress = React.useMemo(() => <Address account={assetData ? assetData : {}} prices={prices} />, [assetData, prices]);
+	// const displayAddress = React.useMemo(() => <Address account={assetData ? assetData : {}} prices={prices} />, [assetData, prices]);
+	const displayAddress = React.useMemo(() => <Address account={account} prices={prices} />, [assetData, prices]);
 
 	const render = React.useMemo(
 		() => (
@@ -86,7 +87,7 @@ export default function Account(props) {
 					<NotFound altText={"Account was not found"} />
 				) : (
 					<>
-						{displayAddress}
+						{/*{displayAddress}*/}
 						{assetTxs}
 					</>
 				)}

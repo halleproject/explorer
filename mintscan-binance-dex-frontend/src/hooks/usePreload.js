@@ -14,7 +14,7 @@ export default function usePreload() {
 	useEffect(() => {
 		const cancelToken = axios.CancelToken;
 		const source = cancelToken.source();
-		// dispatch(getCyptoAcceleratedNode());
+		dispatch(getCyptoAcceleratedNode());
 		dispatch(getCryptoBasicData("binancecoin", "usd", source.token));
 		dispatch(getCryptoStatus(source.token));
 		dispatch(getCryptoFees(source.token));
