@@ -185,7 +185,6 @@ func (c Client) Asset(assetName string) (models.Asset, error) {
 
 // Assets returns information of all assets existing in an active chain
 func (c Client) Assets(page int, rows int) (models.AssetInfo, error) {
-	return models.AssetInfo{}, nil //todo zxl
 	queryStr := "/assets?page=" + strconv.Itoa(page) + "&rows=" + strconv.Itoa(rows)
 	resp, err := c.explorerClient.R().Get(queryStr)
 	if err != nil {
