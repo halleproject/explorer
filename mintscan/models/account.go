@@ -1,20 +1,30 @@
 package models
 
-import "encoding/json"
-
 // Account defines the structure for account information
 type Account struct {
-	Address       string          `json:"address"`
-	PublicKey     json.RawMessage `json:"public_key"`
-	AccountNumber int64           `json:"account_number"`
-	Sequence      int64           `json:"sequence"`
-	Flags         uint64          `json:"flags"`
-	Balances      []struct {
-		Symbol string `json:"symbol"`
-		Free   string `json:"free"`
-		Locked string `json:"locked"`
-		Frozen string `json:"frozen"`
-	} `json:"balances"`
+	//Address       string          `json:"address"`
+	//PublicKey     json.RawMessage `json:"public_key"`
+	//AccountNumber int64           `json:"account_number"`
+	//Sequence      int64           `json:"sequence"`
+	//Flags         uint64          `json:"flags"`
+	//Balances      []struct {
+	//	Symbol string `json:"symbol"`
+	//	Free   string `json:"free"`
+	//	Locked string `json:"locked"`
+	//	Frozen string `json:"frozen"`
+	//} `json:"balances"`
+	Height string `json:"height"`
+	Result struct {
+		Type  string `json:"type"`
+		Value struct {
+			AccountNumber int           `json:"account_number"`
+			Address       string        `json:"address"`
+			CodeHash      string        `json:"code_hash"`
+			Coins         []interface{} `json:"coins"`
+			PublicKey     string        `json:"public_key"`
+			Sequence      int           `json:"sequence"`
+		} `json:"value"`
+	} `json:"result"`
 }
 
 // AccountTxs defines the structure for asset transactions
