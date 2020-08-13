@@ -1,17 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <g id="transations_ic" transform="translate(-701 -84)">
-    <circle id="타원_208" data-name="타원 208" cx="5" cy="5" r="5" transform="translate(717 87)" fill="#ebba16"/>
-    <g id="그룹_3970" data-name="그룹 3970" transform="translate(7)">
-      <g id="그룹_3966" data-name="그룹 3966" transform="translate(679.234 -1011.143)">
-        <path id="패스_2045" data-name="패스 2045" d="M34.785,1117.656H23.34a.574.574,0,0,1-.574-.574v-14.764a.574.574,0,0,1,.574-.574H34.785a.574.574,0,0,1,.574.574v14.764A.574.574,0,0,1,34.785,1117.656Zm-10.871-1.149h10.3v-13.615h-10.3Z" fill="#222" stroke="#222" stroke-width="0.2" style="isolation: isolate"/>
-        <rect id="사각형_1836" data-name="사각형 1836" width="6.178" height="1.149" transform="translate(26.131 1104.716)" fill="#222" stroke="#222" stroke-width="0.2" style="isolation: isolate"/>
-        <rect id="사각형_1837" data-name="사각형 1837" width="6.179" height="1.149" transform="translate(26.122 1108.941)" fill="#222" stroke="#222" stroke-width="0.2" style="isolation: isolate"/>
-        <rect id="사각형_1838" data-name="사각형 1838" width="6.179" height="1.149" transform="translate(26.122 1113.104)" fill="#222" stroke="#222" stroke-width="0.2" style="isolation: isolate"/>
-        <rect id="사각형_1839" data-name="사각형 1839" width="2.255" height="1.149" transform="translate(30.046 1110.998)" fill="#222" stroke="#222" stroke-width="0.2" style="isolation: isolate"/>
-        <rect id="사각형_1840" data-name="사각형 1840" width="3.097" height="1.149" transform="translate(26.122 1110.998)" fill="#222" stroke="#222" stroke-width="0.2" style="isolation: isolate"/>
-        <path id="패스_2046" data-name="패스 2046" d="M38.877,1105.491h-1.12v1.149H38.3v13.616h-10.3v-.072H26.858v.647a.574.574,0,0,0,.574.573H38.877a.574.574,0,0,0,.574-.573v-14.764A.574.574,0,0,0,38.877,1105.491Z" transform="translate(-0.846 -0.775)" fill="#222" stroke="#222" stroke-width="0.2" style="isolation: isolate"/>
-      </g>
-      <rect id="사각형_1842" data-name="사각형 1842" width="32" height="32" transform="translate(694 84)" fill="none"/>
-    </g>
-  </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="133px" height="133px" viewBox="0 0 133 133" enable-background="new 0 0 133 133" xml:space="preserve">  <image id="image0" width="133" height="133" x="0" y="0"
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIUAAACFCAMAAABCBMsOAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABs1BMVEX////mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7///871RHQAAAAj3RSTlMAAAtqsuf3+DIdyvb50SR9+ugKCIE3
+sMOJ5n4GMNs12eyC1io7V2aS8Cjq76ODcXJ1dBctcHM0OeIFoZQWlY8vW14glnqA2N8B5MeMbf1n
+ZWloEqzQ0gy5ogL+e6egpncDExUlzu7GuPvliniZWRExMz3J4F9gWmxr9PLUk3+NLCacl5sJwY7T
+4Q207dyvY59Lqi0AAAABYktHRACIBR1IAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AgL
+Cjohwid0BQAAAohJREFUeNrt2v1TEkEcx/E9UMAQ8jKzjIqylJLHoqI0xZ7EsizDQq1Mi55LM9Ie
+1R7tSfmXu109HWGaud29nWGYz/vH29nvvYa7m+OHIwQhhBBCCCGEUMWnaQ5nTa3LvZ5HW6tui7d+
+47C73uXzm0tbG8yjLr3GuU1e0bi9tripJvNUO4qlNZtLOzcd3tWyWxIR2FN6qr3mqfaVKYLm0v6S
+hQOtcghv2akOmqc6VLbUZi61l66EDksgHEfYjI5wJBqNseKJo+aptGPJeGyj+PET6ysnW1aPRaOR
+cIiNSJ0SV5xmEzq7NPFI1xk2pFsY0cP2pyUMhoKQXjbmrKjiHN19XgpBFeQCnRMRVVw0NvfJIZgi
+028MuiSqaDA2X7ZBQeitoYsq6A/ptEMxYAy6IqO4aodikE6SUVyzQ3EdCiiggAIKKCpFMXQjO+yz
+2HA2fFOJInOryFVOiWJklE+hq7kiYT5FtxpF49jt3B2L5e6O36vmZwQKKKCAwrpiYnLCYpNDqhT3
+H+RDHRYL5R/WKVFkfHxvs0dqFI/5FE/UXJGnfIpniu7O3uccvajyJxUKKKCAwqLi5ZRnymLTAYci
+xasgz2uk36NEkUnxvc1m1Ci8fIrXaq5Ikk9RUHR3Nr1Jz1osXZiu7icVCiiggKLiFW12KAZlFXN2
+KN7KKN4ZezvtUNAvH96LKj4Ym1N2KOhXIFlRxUf6Q47JKz7ROfOiigX2Z2VWVlFgYxZFFeQz2//F
+L6NY/MqGtAsjyDedTRj9Pp9IxgRKJn40r/0HlfhqjPRw/uH9X3m/BIKQwJIdiBnxm2K1kXFd1vBz
+QNJAvzL9Nfe7749bLFfw7/KK7NedCCGEEEIIIVTt/QOHjudAkKpbzQAAACV0RVh0ZGF0ZTpjcmVh
+dGUAMjAyMC0wOC0xMVQxMDo1ODozMyswMDowMGwbMRsAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjAt
+MDgtMTFUMTA6NTg6MzMrMDA6MDAdRomnAAAAAElFTkSuQmCC" />
 </svg>

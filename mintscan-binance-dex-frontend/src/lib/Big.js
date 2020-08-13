@@ -20,7 +20,6 @@ export const fixed = (input = "0", places = consts.NUM.DEFAULT_DECIMALS) => {
 export const add = (input1 = "0", input2 = "0", places = consts.NUM.DEFAULT_DECIMALS) => {
 	return new B(input1).plus(input2).toFixed(places);
 };
-
 export const sumArray = (inputArray = [], places = consts.NUM.DEFAULT_DECIMALS) => {
 	let sum = 0;
 	_.each(inputArray, v => {

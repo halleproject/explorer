@@ -79,9 +79,14 @@ export default function({msg, txData}) {
 									<ul className={cx("value-wrapper")}>
 										<li className={cx("label")}>Value</li>
 										<li className={cx("value")}>
+											{/*{_.map(value.amount, v => (*/}
+											{/*	<span key={value.to_address}>*/}
+											{/*		{divide(v.amount, consts.NUM.BASE_MULT)} {v.denom}*/}
+											{/*	</span>*/}
+											{/*))}*/}
 											{_.map(value.amount, v => (
 												<span key={value.to_address}>
-													{divide(v.amount, consts.NUM.BASE_MULT)} {v.denom}
+													{divide(v.amount, consts.NUM.BASE_MULT)} hale
 												</span>
 											))}
 										</li>

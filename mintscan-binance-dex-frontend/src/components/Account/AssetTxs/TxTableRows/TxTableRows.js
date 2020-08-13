@@ -2,12 +2,13 @@ import React from "react";
 import styles from "./TxTableRows.scss";
 import cn from "classnames/bind";
 import {NavLink} from "react-router-dom";
-import {reduceString, setAgoTime} from "src/lib/scripts";
+import {_, getTotalTime, reduceString, setAgoTime} from "src/lib/scripts";
 //  components
 import {TableCell, TableRow} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";
 
 import pickData from "./pickData";
+import InfoRow from "../../../common/InfoRow/InfoRow";
 
 const cx = cn.bind(styles);
 
@@ -86,7 +87,7 @@ export default function({data, account = ""}) {
 					{pickData(data, cx, "Value", account)}
 				</TableCell>
 				<TableCell className={cx("tableCell", "text", "padding-left10")} align='left'>
-					{pickData(data, cx, "Currency", account)}
+					hale
 				</TableCell>
 				<TableCell className={cx("tableCell", "padding-left10")} align='right'>
 					{data.height ? (
@@ -98,7 +99,7 @@ export default function({data, account = ""}) {
 					)}
 				</TableCell>
 				<TableCell className={cx("tableCell", "text", "padding-left10")} align='right'>
-					{data.timestamp ? setAgoTime(data.timestamp) : <Skeleton />}
+					{_.isNil(data.timestamp) ? <Skeleton /> : `${setAgoTime(data.timestamp)} (${getTotalTime(data.timestamp)})`}
 				</TableCell>
 			</TableRow>
 		),

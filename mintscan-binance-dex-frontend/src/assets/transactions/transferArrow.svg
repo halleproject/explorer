@@ -1,9 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="33" viewBox="0 0 24 33">
-  <g id="arrow2" transform="translate(-801.5 -758)">
-    <path id="패스_1042" data-name="패스 1042" d="M.354.356a1.207,1.207,0,0,0,0,1.709l4.7,4.7-4.7,4.7a1.208,1.208,0,0,0,1.709,1.709L7.625,7.614a1.207,1.207,0,0,0,0-1.709L2.063.344A1.218,1.218,0,0,0,.354.356Z" transform="translate(815.573 759.696)" fill="#222" stroke="#222" stroke-width="0.5"/>
-    <path id="패스_2179" data-name="패스 2179" d="M.354.356a1.207,1.207,0,0,0,0,1.709l4.7,4.7-4.7,4.7a1.208,1.208,0,0,0,1.709,1.709L7.625,7.614a1.207,1.207,0,0,0,0-1.709L2.063.344A1.218,1.218,0,0,0,.354.356Z" transform="translate(811.979 789.227) rotate(180)" fill="#222" stroke="#222" stroke-width="0.5"/>
-    <path id="패스_2026" data-name="패스 2026" d="M0,0H16.355" transform="translate(821.355 766.387) rotate(180)" fill="none" stroke="#222" stroke-linecap="round" stroke-width="3"/>
-    <path id="패스_2180" data-name="패스 2180" d="M0,0H16.355" transform="translate(806.198 782.536)" fill="none" stroke="#222" stroke-linecap="round" stroke-width="3"/>
-    <rect id="사각형_2038" data-name="사각형 2038" width="24" height="33" transform="translate(801.5 758)" fill="none"/>
-  </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="138px" viewBox="0 0 100 138" enable-background="new 0 0 100 138" xml:space="preserve">  <image id="image0" width="100" height="138" x="0" y="0"
+    href="data:image/png;base64,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
+MDowMMLXBNgAAAAASUVORK5CYII=" />
 </svg>

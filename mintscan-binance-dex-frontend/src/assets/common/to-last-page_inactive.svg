@@ -1,11 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-    <defs>
-        <style>
-            .cls-1{fill:#b2b6bc}.cls-2{fill:none}
-        </style>
-    </defs>
-    <g id="first_page-24px" transform="rotate(180 12 12)">
-        <path id="패스_2154" d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z" class="cls-1" data-name="패스 2154"/>
-        <path id="패스_2155" d="M24 24H0V0h24z" class="cls-2" data-name="패스 2155"/>
-    </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">  <image id="image0" width="100" height="100" x="0" y="0"
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAQAAADa613fAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZ
+cwAALiMAAC4jAXilP3YAAAAHdElNRQfkCAsKHwxvC/iXAAACRUlEQVR42u3asUocQRgH8P+p2FkJ
+el7AZxCmyRVRhEPFRKNGBcEioI2Vb3CCNha2goX4AJ548SSieIUkhdXeC9gF8gg2QjDNetzuXCEz
+38x8c3z/ZmYWdtgf8+2yO2zhFb2RvtAXIBCBMI9AuEUg3CIQbhEItwiEWwTCLQLhFoFwi0C4RSDc
+0jOQAZOTkiEcYwp/UVXNxPIC1Nuc4zhFGY/YVn9M5imYbJkm96ik3XXUiCBvcz6oaZN5zEqr0u6d
+Y80O0s5k2n4yO93+HjnHKglkMG37fUJ2MqMavpFQrGIEUSc4yBy4CE8xLC1V5UYxvke6UJajhHSh
+XIakWD21OFEsH79dKEtRQgDkKfUwFIqXRhYUmrdfnfI1TohO+eGbQvc9EphC+WGlUxbjhOiUKyzE
+CdEpDV8U+m/2QBQXmw865UucEJ1y7Z7iajuoiv0cZTZOCLCXW5VbTMQJAao4zIw3Y4UMo5wZP7mE
+GO00viujaKHUMW7gLEZInnHv+s3LTWnpjBm3DDeQMf8MF6VVQoKibwY9pIQWRv0zqEsrz7jzxaCF
+6Iw5XwxKSFAGHSQwgwoSnEEDYcCggLBgWEMSJgxLCB+GFYQTwwLCi2EMST7kGDdhGYaQpJhj/MTn
+sAzTFaljpGN042MDzg3kY4YRfDXMIf/aPbqietHm9gDZSNu6oiuqX2n72yNE1TCPI+yqFTIGsIUm
+ntHEd7PTjX4845ie+adRINwiEG4RCLcIhFsEwi0C4RaBcItAuEUg3CIQbhEIt/wHWTd7pBqgKhIA
+AAAldEVYdGRhdGU6Y3JlYXRlADIwMjAtMDgtMTFUMTA6MzE6MTIrMDA6MDCc6dxbAAAAJXRFWHRk
+YXRlOm1vZGlmeQAyMDIwLTA4LTExVDEwOjMxOjEyKzAwOjAw7bRk5wAAAABJRU5ErkJggg==" />
 </svg>

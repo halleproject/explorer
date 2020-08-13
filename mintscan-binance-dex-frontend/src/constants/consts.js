@@ -16,7 +16,7 @@ export default Object.freeze({
 	// },
 	DENOM: "hale",
 	NUM: {
-		BASE_MULT: 1000000000000000000,
+		BASE_MULT: 1000000,
 		DEFAULT_DECIMALS: 18,
 		PAGE_SIZE: 20,
 
@@ -41,6 +41,7 @@ export default Object.freeze({
 		STATUS: "/status",
 		BLOCKLIST: "/blocks",
 		ACCOUNT: "/account",
+		// ACCOUNT_TXS: acc => `/account/txs/${acc}?page=1&rows=20`,
 		ACCOUNT_TXS: acc => `/account/txs/${acc}?page=1&rows=20`,
 		TXLIST: "/txs",
 		TX: "/txs",

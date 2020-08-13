@@ -14,7 +14,7 @@ import {txCheckHTLT} from "src/components/Tx/TxData/TxCase";
 
 export const CELL_TYPES = Object.freeze(["Tx Hash", "Type", "From", "To", "Value", "Denom", "Time"]);
 
-const BASE_MULT = Math.pow(10, 18);
+const BASE_MULT = Math.pow(10, 6);
 
 export default function(blockData, cx, cell) {
 	switch (cell) {

@@ -1,22 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <g id="blocks_ic" transform="translate(4940 -7643)">
-    <circle id="타원_208" data-name="타원 208" cx="5" cy="5" r="5" transform="translate(-4919 7655)" fill="#ebba16"/>
-    <g id="그룹_3969" data-name="그룹 3969" transform="translate(-5491 7559)">
-      <g id="그룹_3961" data-name="그룹 3961" transform="translate(-968.549 -715.453)">
-        <path id="패스_2032" data-name="패스 2032" d="M1583.819,825.125v5.659l5.039-3.015v-5.644" transform="translate(-48.192 -14.037)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
-        <path id="패스_2033" data-name="패스 2033" d="M1554.685,821.994v5.8l5.039,2.881" transform="translate(-24.096 -13.928)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
-        <path id="패스_2034" data-name="패스 2034" d="M1559.723,811.088l-5.039-3.05,5.039-2.884,5.039,2.884Z" transform="translate(-24.096 0)" fill="none" stroke="#222" stroke-linejoin="round" stroke-width="1.2"/>
-        <path id="패스_2035" data-name="패스 2035" d="M1612.954,874.8v5.659l5.039-3.015V871.8" transform="translate(-72.288 -55.123)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
-        <path id="패스_2036" data-name="패스 2036" d="M1583.819,871.672v5.8l5.039,2.881" transform="translate(-48.192 -55.014)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
-        <path id="패스_2037" data-name="패스 2037" d="M1588.858,854.831l5.039,2.885-5.039,3.05-5.039-2.932" transform="translate(-48.192 -41.086)" fill="none" stroke="#222" stroke-linejoin="round" stroke-width="1.2"/>
-        <path id="패스_2038" data-name="패스 2038" d="M1554.685,874.8v5.659l5.039-3.015V871.8" transform="translate(-24.096 -55.123)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
-        <path id="패스_2039" data-name="패스 2039" d="M1525.55,871.672v5.8l5.039,2.881" transform="translate(0 -55.014)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
-        <path id="패스_2040" data-name="패스 2040" d="M1530.589,854.831l-5.039,2.885,5.039,3.05,5.039-2.932" transform="translate(0 -41.086)" fill="none" stroke="#222" stroke-linejoin="round" stroke-width="1.2"/>
-        <line id="선_223" data-name="선 223" y2="1.79" transform="translate(1527.25 819.59)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
-        <line id="선_224" data-name="선 224" y2="1.79" transform="translate(1532.242 810.926)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
-        <line id="선_225" data-name="선 225" y2="1.79" transform="translate(1537.336 819.546)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
-      </g>
-      <rect id="사각형_1841" data-name="사각형 1841" width="32" height="32" transform="translate(551 84)" fill="none"/>
-    </g>
-  </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="133px" height="133px" viewBox="0 0 133 133" enable-background="new 0 0 133 133" xml:space="preserve">  <image id="image0" width="133" height="133" x="0" y="0"
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIUAAACFCAMAAABCBMsOAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACmlBMVEX////mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7///8+3mj2AAAA3HRSTlMAAHDQQsQkogR8+E7SLauqEov9
+EWPkNbsTjPf+aeX5fydoQcioKSrHF5vRS5pt63rqzaEiTSuvwD4/CoX842CECVjdjg/cVzi6tzS5
+NxiY1lbs9nsDfcImrD0gnlBRnR8G83MB8gWZGUynQNfobOCPFpDYtTEytltc4fWKDqBPLqaRsoDa
+WWsNtJ/OKDDnpUQLYsU53x5l9AyclnfpVRtuwxTZdO8CvS8hcmY8U/GVweaUWr6SOiwQFdWNNqQl
+ybxqsL+TVAijcc9J8BzTO1+G2zMdykXLSIN1s/ojo/WcRwAAAAFiS0dEAIgFHUgAAAAJcEhZcwAA
+LiMAAC4jAXilP3YAAAAHdElNRQfkCAsLFgy/CynpAAAFtklEQVR42u3b+V8UZRwH8PmCCAIaIgq0
+gAiogBzCkuDB1aKlnKZgRoqAZqQReBRpxE0Uh5hFUVBtkFRiYEUUkaG0geBBapr2/DHNHrg7351l
+mWu3Xs3nJ5h5nu+8Z9k5nweKkiNHjhw5cuT8jwLW4uDoMNdqmygWOBFCnBbYVbHQmejjvNBuCpdF
+rmQ2rotc7KNwcyemcXezg2LxEoLz2GIbKzyWehLzeC5dZkuF13LCnuVeNlOs8CaW473CJgofX7Td
+x5m/Knx9pFf4+TM3GrAycGUAc5H/KokVQcHogwhZTS9dE4KWrg2SUBEahrYWvs6wZl04WhMRKpUi
+Mgp9IaKN50uXaPT1WB8picItBu1urJLxx1LGovUxcaIrntiAthGfYHb0bIxHbTasEVWxafMWZv3E
+JNazWVIis9mW5BTxFKlPop1UpQF70lSo5dZtIimeehpV3r4DLGfHdtQ6PUMERWYWqpqdA3MnJxv1
+yMoUivDbyaz4zK7dYC27c9FRG7VKkCEhD+3Wkj1WDdoEPov65e3lbXguH58qn5+XQZt9+GS6v4CX
+4cCuQvS5FhXPGwFQXITOtAejD3FHxOGdeSGTg0GbwxGoguOLHA2BJaiC00aOBm1eckJVSvZwUhxh
+9j76Mg+DNpFHmYWOcFKUMvq+UsYTAVBWzqhUyklxzKTn8RO8DXSok6+a1DrGU1H6mhCD7ppa8bpA
+xanTbwhD6K7sab6nBCkq9Vf2N/eHbK7iQXCJy68u0taLFaSI0ClqdD/XunE0rK6r1/aLWUZRYYIU
++VpFw+xfNabxrXkTDlTUznZroqi3hSveMX7H1/s2z8vQojK966oSQ9FqesQr2s5YI7QnoUfIs2Io
+1qLz8LsVh+YwnCtHlzFC4sRQ+OGq5L2699kJHh15Zo3JBx+KoYBalsqd58wNCR/tJCxJFeXbCfBx
+F0vx9G7Gzd8nnwazEchn2uu5KApQO7izbODznsOzhjOVvWyEriz9rZ44CoAvcs6zbCWqpo9e9+VX
+4WwEkvd1meHZTCwFnQuxAeZbUrT1519kI/h/o3urI7oCoPl0K5lfBrzU+i4SKOi7lqJ664TBS8YD
+SBIFfZ389jsrH0OHh0lziRR0gko8LRG6vh9itpVOAfCDivXAjD87jFtKqQD4segnRGgd+ZmlnbQK
+Ot2mZ5D0ik2sjSRXAOwdNXxBSn6x1MQGCgDlZV27X8GuCjA8xY3ZVVFlaBhrV8UJQ8Nquyr6DA2d
+ZYWskBWyQlbIClnx71eUi6SoEaQYSBFFkZInSEHq+0VQ9D96tuX7Hpxc6ROo6LtiLMZbQciIjwCF
+esS0FDcF8yl00Iu3omOQUamXk6KTMHM1g5ci4yqq08lJQXXjAeLxTM6KzHFUI/s3bgiK0uSigcwu
+1qmLLYa1v5uvmuhiFijM1XBF0FFWol2ZvGZZYfZUdG0S9a5U8jBoYzYXaLQAbyzUsEbFXFwwinoG
+B/E0aDOBXiJO9eDx5Sb9ihbTZcU9U8xuFycEGOhM42lJ19HJNFQ3XYcx3tp/HfUJmxaGoCi4gd/5
+NjFH0IrHSkZMxzqrmlD78zeEGnQzYm6i2TaKWxqwFM0tBbNx4k3hBv28nGE822amwQKiYStqqRoW
+A2G4v/jjOKruPcRiGMKTHZtOijxrzGxaR/40MkzjSSOO+0D8GXT48Otlnkwn0HvYqR7dYrEVcNsZ
+7ewd43Di3T/ROufbII0C4N4dtK02/WyhwDbsuzfbRQIFQCMaIHG9rwHNfTR609po7CCJAtSX0G5P
+/uWIloyrQWoFwIUBMlfimUOcUikAxvwtGvzxS2DpFKD2VbAaFL5qsJ2CvtN7wIJ4wPLQIKkCIHUG
+GWa2sTWTWAHtyQ9NDA+T28EeCoDm6keIakuzQ6RX0Cdu/SDN5bsWW9hCAeBQSA7O9e9NtlHA33VK
+kFwhR44cOXLkyPkP5R8wN5WP3UvU/wAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMC0wOC0xMVQxMToy
+MjoxMiswMDowMGvGYR0AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjAtMDgtMTFUMTE6MjI6MTIrMDA6
+MDAam9mhAAAAAElFTkSuQmCC" />
 </svg>

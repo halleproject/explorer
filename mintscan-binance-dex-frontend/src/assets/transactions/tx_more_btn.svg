@@ -1,8 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16.658" height="16.375" viewBox="0 0 16.658 16.375">
-  <g id="tx_more_btn" transform="translate(-267.5 -90.625)">
-    <line id="선_99" data-name="선 99" y1="5.302" x2="6.627" transform="translate(274.894 93.32)" fill="none" stroke="#f0b90b" stroke-linecap="round" stroke-width="1"/>
-    <path id="패스_1663" data-name="패스 1663" d="M0,2.469,2.469,0,4.939,2.469" transform="translate(279.813 91.479) rotate(45)" fill="none" stroke="#f0b90b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-    <path id="패스_1664" data-name="패스 1664" d="M2098.869,2661.8h-5.883v10.036h10.036v-6.566" transform="translate(-1822.835 -2567.617)" fill="none" stroke="#f0b90b" stroke-linejoin="round" stroke-width="1"/>
-    <rect id="사각형_1383" data-name="사각형 1383" width="16" height="16" transform="translate(267.5 91)" fill="none"/>
-  </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="69px" height="68px" viewBox="0 0 69 68" enable-background="new 0 0 69 68" xml:space="preserve">  <image id="image0" width="69" height="68" x="0" y="0"
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEUAAABECAMAAADgDwi+AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABv1BMVEX////mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7m
+gh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7mgh7///8kFYTzAAAAk3RSTlMAAIevKxGPD1yb
+xsiaCevtbhnHpS7Rz0sK6NZt7LAskPRIjo32U0BFQxIqbPgMzjTkBkR82+VS5g563M2C8PvMZuf5
+voFGEx/vniS9uF8VvGn8MmUmAcI4jDPTgN1JxNAoTrfX2th5Nz2cqy/qlmRBssH6Ud+24dUgXfIH
+6YUIeLsDP/1Xhp0w4y0EwMrJ4lpHqRzAnbUWAAAAAWJLR0QAiAUdSAAAAAlwSFlzAAAuIwAALiMB
+eKU/dgAAAAd0SU1FB+QICws3GClO6HcAAAJZSURBVFjD7dX3Q9NAFAfwdwJGCrUKVAuiiBOEglXA
+LaKVFly1WhVw4CpqURyouPfGmX/Ye0mhDb4k97xf8/2l7bvLp7mRC0CQIBoRHllkmhWVukqViVls
+eANLqkM1/6TWmFfCSy0msszDWF5nkqkv3UxD1C6tWOmGxBppxGwqH9SqZru4eg2ttLgga1sdc2Os
+K9bXk9OzQbaENm7a7ExrW/uCKYYtFTYT6SAUWe+M+6y0pQBUdhWnp5tStvrtF0xi2/aWnrnhUkpv
+wlfpq3csAqXs8FF27trtnPk9fCW2d9/85fv7I/jRwFYODBSFg4eShwdTafltCJjK8JGicfTYcex9
+Apc0zFQyJ21jKCuszn344xTwlFrbqD5t7xfI4XiagKUkzlhG6OzcroNz+HuEpRijFjJW2rsp61EH
+jhI7by3MhbIn4CKudZylXEKkd1yUlMtY6QCOcgUvuVpVKkAYj5hrwFHGELkeL6tAHksTHOUGXpE2
+yktwU5ZuAUPJWcd1wQHD+KQ5GuMotxG54xwjgDEFwFCGEbkrFipeIZR7snY/rKl0461kBK08mI4W
+lJSHsvRI0MqgbHusoszgrTxxUSZk29NnCkpSVhqFizIiG5+rnFLTsvLCTcniX7z0Vwo4oBld5ZUs
+dAld5bUsJHWVN/jCeaur4LS8a9dV3pNbjqvgCf1BWxHZj3mhr7glULyUT7L7JP1Mf84pK19k94Gv
+pNIMykobvuyAVMyMqpL7hm8HQplFJlozq5LvP7DzT0KZMpnpASp5HpJOkQr8qlM3On//gSBB/jN/
+Aavs31C3umxkAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIwLTA4LTExVDExOjU1OjI0KzAwOjAwTX5d
+PgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMC0wOC0xMVQxMTo1NToyNCswMDowMDwj5YIAAAAASUVO
+RK5CYII=" />
 </svg>

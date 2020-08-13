@@ -1,6 +1,6 @@
 import React from "react";
 import {_, formatNumber, reduceString, refineAddress} from "src/lib/scripts";
-import {divide, fixed} from "src/lib/Big";
+import {fixed} from "src/lib/Big";
 import getTxType from "src/constants/getTxType";
 import {NavLink} from "react-router-dom";
 //  components
@@ -10,7 +10,6 @@ import Decimal from "src/components/common/Decimal";
 import greenArrowSVG from "src/assets/common/transferarrow_gr.svg";
 import redArrowSVG from "src/assets/common/transferarrow_rd.svg";
 
-import consts from "src/constants/consts";
 import txTypes from "src/constants/txTypes";
 const {COSMOS, WEB3, DEX, TOKENS, MISC} = txTypes;
 
@@ -21,7 +20,7 @@ export default function(data, cx, cell, account) {
 			return <Skeleton />;
 		}
 		case "address": {
-			var txtype = data?.messages[0].type;
+			var txtype = data?.messages[0].type
 			if (txtype === WEB3.SEND || txtype == COSMOS.SEND) {
 				if (data.fromAddr === "") {
 					return <span>Multi send</span>;
@@ -48,7 +47,7 @@ export default function(data, cx, cell, account) {
 				<>
 					{Number(data.messages[0].value.value) !== 0 ? (
 						<div className={cx("number-display")}>
-							<Decimal value={formatNumber(divide(data.messages[0].value.value, consts.NUM.BASE_MULT))} fontSizeBase={13} />
+							<Decimal value={formatNumber(fixed(data.messages[0].value.value))} fontSizeBase={13} />
 						</div>
 					) : (
 						"-"
@@ -57,14 +56,7 @@ export default function(data, cx, cell, account) {
 			);
 		}
 		case "Currency": {
-			let ret = "";
-			const type = data?.messages?.[0].type;
-			if (!_.isNil(type)) {
-				if (type === COSMOS.SEND) {
-					ret = data?.messages?.[0]?.value?.amount[0]?.denom;
-				} else if (type === WEB3.SEND) ret = "hale";
-			}
-			return <span className={cx("currency")}>{ret}</span>;
+			return <span className={cx({BNB: data.txAsset === "BNB"}, "text")}>{data.txAsset}</span>;
 		}
 		default:
 			return "DEFAULT";
