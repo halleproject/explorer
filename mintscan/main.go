@@ -74,6 +74,8 @@ func main() {
 	getR.HandleFunc("/txs_address", handlers.NewTransaction(l, client, db).GetTxsByAddress)
 	getR.HandleFunc("/two_auth/generate", handlers.NewTwoAuth(l, client, db).Generate)
 	getR.HandleFunc("/two_auth/auth", handlers.NewTwoAuth(l, client, db).Auth)
+	getR.HandleFunc("/app_version/set", handlers.NewAppVersion(l, client, db).SetVersion)
+	getR.HandleFunc("/app_version/get", handlers.NewAppVersion(l, client, db).GetVersion)
 
 	postR := r.Methods(http.MethodPost).PathPrefix("/v1").Subrouter()
 	postR.HandleFunc("/txs", handlers.NewTransaction(l, client, db).GetTxsByType)
