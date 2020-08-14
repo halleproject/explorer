@@ -1,7 +1,8 @@
 # VERSION               := $(shell echo $(shell git describe --tags) | sed 's/^v//')
 VERSION 			  ?= manual
 COMMIT                := $(shell git log -1 --format='%H')
-TOOLS_DESTDIR         ?= $(GOPATH)/bin/chain-exporter
+COMMIT_SHA1           :=`git rev-parse HEAD`
+TOOLS_DESTDIR         ?= bin/chain-exporter
 #BUILD_FLAGS 		  := -ldflags "-X main.buildHash=${COMMIT} -X util.BuildVersion=${VERSION}"
 BUILD_FLAGS           := -tags netgo -ldflags "-X github.com/chain-exporter/version.GitCommit=${COMMIT_HASH}  -X  github.com/chain-exporter/version.VERSION=0.1.0 -X github.com/chain-exporter/version.COMMIT_SHA1=${COMMIT_SHA1}   -X 'github.com/chain-exporter/version.BUILD_TIME=`date`'  -X  'github.com/chain-exporter/version.GO_VERSION=`go version`' -X 'github.com/chain-exporter/version.GIT_BRANCH=`git symbolic-ref --short -q HEAD`' "
 

@@ -14,8 +14,8 @@ func main() {
 	flag.Parse()
 
 	if v {
-		//fmt.Printf("version:\t%s \nbuild time:\t%s\ngit branch:\t%s\ngit commit:\t%s\ngo version:\t%s\n", version.VERSION, version.BUILD_TIME, version.GIT_BRANCH, version.COMMIT_SHA1, version.GO_VERSION)
-		fmt.Printf("version:\t%s\n", version.Version)
+		fmt.Printf("version:\t%s \nbuild time:\t%s\ngit branch:\t%s\ngit commit:\t%s\ngo version:\t%s\n", version.VERSION, version.BUILD_TIME, version.GIT_BRANCH, version.COMMIT_SHA1, version.GO_VERSION)
+		//fmt.Printf("version:\t%s\n", version.Version)
 		return
 	}
 
