@@ -47,7 +47,7 @@ export default function(data, cx, cell, account) {
 				<>
 					{Number(data.messages[0].value.value) !== 0 ? (
 						<div className={cx("number-display")}>
-							<Decimal value={formatNumber(fixed(data.messages[0].value.value))} fontSizeBase={13} />
+							<Decimal value={formatNumber(fixed(data.messages[0].value.value)/1000000)+".00000000"} fontSizeBase={13} />
 						</div>
 					) : (
 						"-"
