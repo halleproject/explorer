@@ -44,8 +44,12 @@ func (s *Status) GetStatus(rw http.ResponseWriter, r *http.Request) {
 		s.l.Printf("failed to query previous block: %s\n", err)
 	}
 
-	blockTime := block.Block.Time.UTC().
-		Sub(prevBlock.Block.Time.UTC()).Seconds()
+	var blockTime float64
+	if block.Block != nil {
+		blockTime = block.Block.Time.UTC().Sub(prevBlock.Block.Time.UTC()).Seconds()
+	} else {
+		s.l.Printf("block.Block is nil")
+	}
 
 	result := &models.Status{
 		ChainID:           status.NodeInfo.Network,
