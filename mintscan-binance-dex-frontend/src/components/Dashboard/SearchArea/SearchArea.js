@@ -20,7 +20,7 @@ export default function() {
 						<h1 className={cx("title")}>
 							Hale <span>EXPLORER</span>
 						</h1>
-						<p className={cx("byCosmostation")}>By Cosmostation</p>
+						<p className={cx("byCosmostation")}> </p>
 					</div>
 					<div className={cx("search-wrapper")}>
 						<SearchArea propCx={cx} dropdownStyle={{position: "fixed", zIndex: 15}} interactiveWidth={true} />
