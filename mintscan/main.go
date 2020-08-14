@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"flag"
+	"fmt"
 	"github.com/rs/cors"
 	"log"
 	"net/http"
@@ -13,13 +15,25 @@ import (
 	"github.com/cosmostation/mintscan-binance-dex-backend/mintscan/config"
 	"github.com/cosmostation/mintscan-binance-dex-backend/mintscan/db"
 	"github.com/cosmostation/mintscan-binance-dex-backend/mintscan/handlers"
+	"github.com/cosmostation/mintscan-binance-dex-backend/mintscan/version"
 
 	"github.com/pkg/errors"
 
 	"github.com/gorilla/mux"
 )
 
+var v bool
+
 func main() {
+	flag.BoolVar(&v, "version", false, "show version and exit")
+	flag.Parse()
+
+	if v {
+		//fmt.Printf("version:\t%s \nbuild time:\t%s\ngit branch:\t%s\ngit commit:\t%s\ngo version:\t%s\n", version.VERSION, version.BUILD_TIME, version.GIT_BRANCH, version.COMMIT_SHA1, version.GO_VERSION)
+		fmt.Printf("version:\t%s\n", version.Version)
+		return
+	}
+
 	l := log.New(os.Stdout, "Mintscan API ", log.Lshortfile|log.LstdFlags)
 
 	cfg := config.ParseConfig()
