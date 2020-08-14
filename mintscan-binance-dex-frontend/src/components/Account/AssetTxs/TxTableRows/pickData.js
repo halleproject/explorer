@@ -1,8 +1,10 @@
 import React from "react";
 import {_, formatNumber, reduceString, refineAddress} from "src/lib/scripts";
-import {fixed} from "src/lib/Big";
+import {divide,fixed} from "src/lib/Big";
 import getTxType from "src/constants/getTxType";
 import {NavLink} from "react-router-dom";
+import consts from "src/constants/consts";
+
 //  components
 import Skeleton from "react-skeleton-loader";
 import Decimal from "src/components/common/Decimal";
@@ -47,7 +49,7 @@ export default function(data, cx, cell, account) {
 				<>
 					{Number(data.messages[0].value.value) !== 0 ? (
 						<div className={cx("number-display")}>
-							<Decimal value={formatNumber(fixed(data.messages[0].value.value)/1000000)+".00000000"} fontSizeBase={13} />
+							<Decimal value={divide(data.messages[0].value.value, consts.NUM.BASE_MULT)} fontSizeBase={13} />
 						</div>
 					) : (
 						"-"

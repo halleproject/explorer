@@ -17,7 +17,7 @@ export default Object.freeze({
 	DENOM: "hale",
 	NUM: {
 		BASE_MULT: 1000000,
-		DEFAULT_DECIMALS: 18,
+		DEFAULT_DECIMALS: 6,
 		PAGE_SIZE: 20,
 
 		SPARE_PAGE_CNT: 2, //  amount of pages to preload in pagination
