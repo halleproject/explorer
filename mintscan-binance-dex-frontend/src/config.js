@@ -3,8 +3,8 @@
  */
 
 const config = Object.freeze({
-	API_DEV: "http://192.168.3.100:5000/v1",
-	API_PROD: "http://192.168.3.100:5000/v1",
+	API_DEV: "http://testwallet.hallechain.cn/v1",
+	API_PROD: "http://testwallet.hallechain.cn/v1",
 });
 
 export default config;
