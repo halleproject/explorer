@@ -81,7 +81,7 @@ export default function(blockData, cx, cell) {
 				const split = amount.split(".");
 				return (
 					<>
-						<span className={cx("text")}>{formatNumber(split[0])}</span>.<span className={cx("text", "decimal")}>{split[1]}</span>
+						<span className={cx("text")}>{formatNumber(split[0])}</span>.<span className={cx("text", "decimal")}>{split[1].slice(0,8)}</span>
 					</>
 				);
 			}
