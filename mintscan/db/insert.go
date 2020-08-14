@@ -8,7 +8,7 @@ import (
 )
 
 func (db *Database) CreateTables() error {
-	for _, model := range []interface{}{&schema.TwoAuth{}} {
+	for _, model := range []interface{}{&schema.TwoAuth{}, &schema.AppVersion{}} {
 		// Disable pluralization
 		orm.SetTableNameInflector(func(s string) string {
 			return s
@@ -29,7 +29,7 @@ func (db *Database) CreateTables() error {
 // InsertExportedData inserts exported block, transaction data
 // RunInTransaction runs a function in a transaction.
 // if function returns an error transaction is rollbacked, otherwise transaction is committed.
-func (db *Database) InserTwoAuth(ta *schema.TwoAuth) error {
+func (db *Database) InsertTwoAuth(ta *schema.TwoAuth) error {
 
 	err := db.RunInTransaction(func(tx *pg.Tx) error {
 		if ta != nil {
@@ -47,5 +47,44 @@ func (db *Database) InserTwoAuth(ta *schema.TwoAuth) error {
 	}
 
 	return nil
+}
 
+func (db *Database) InsertAppVerion(av *schema.AppVersion) error {
+
+	err := db.RunInTransaction(func(tx *pg.Tx) error {
+		if av != nil {
+			err := tx.Insert(av)
+			if err != nil {
+				return err
+			}
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (db *Database) UpdateAppVerion(av *schema.AppVersion) error {
+
+	err := db.RunInTransaction(func(tx *pg.Tx) error {
+		if av != nil {
+			err := tx.Update(av)
+			if err != nil {
+				return err
+			}
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

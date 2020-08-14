@@ -145,9 +145,8 @@ func CreateSecret() string {
 // Generate returns TwoAuth information
 func (ta *TwoAuth) Generate(rw http.ResponseWriter, r *http.Request) {
 	twoAuthInfo := schema.TwoAuth{Key: CreateSecret()}
-	_ = twoAuthInfo
 
-	err := ta.db.InserTwoAuth(&twoAuthInfo)
+	err := ta.db.InsertTwoAuth(&twoAuthInfo)
 	if err != nil {
 		ta.l.Printf("failed to insert TwoAuth : %s", err)
 		return

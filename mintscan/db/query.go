@@ -431,3 +431,22 @@ func (db *Database) QueryTwoAuthByID(id int64) (*schema.TwoAuth, error) {
 
 	return &ta, nil
 }
+
+func (db *Database) QueryAppVersion() (schema.AppVersion, error) {
+	var version schema.AppVersion
+
+	err := db.Model(&version).
+		Limit(1).
+		Order("id DESC").
+		Select()
+
+	if err == pg.ErrNoRows {
+		return schema.AppVersion{}, fmt.Errorf("no rows in version table: %s", err)
+	}
+
+	if err != nil {
+		return schema.AppVersion{}, fmt.Errorf("unexpected database error: %s", err)
+	}
+
+	return version, nil
+}
