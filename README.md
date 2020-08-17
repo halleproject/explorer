@@ -18,7 +18,7 @@
     /
     |- chain-exporter
     |- mintscan
-    |- mintscan-binance-dex-frontend
+    |- halle-frontend
 
 #### Chain Exporter
 
@@ -28,9 +28,9 @@ chain-exporter watches a full node of Halle Chain and export chain data into Pos
 
 mintscan provides any necesarry custom APIs.
 
-#### mintscan-binance-dex-frontend
+#### halle-frontend
 
-mintscan-binance-dex-frontend show blocks and transactions.
+halle-frontend show blocks and transactions.
 
 ## Configuration
 
@@ -38,7 +38,7 @@ For configuration, it uses human readable data-serialization configuration file 
 
 To configure `chain-exporter` | `mintscan`, you need to configure  `config.yaml` file in each folder. Reference `example.yaml`.
 
-To configure `mintscan-binance-dex-frontend`, you need access the config.js file directly under the src/ directory and specify your backend dev and prod apis.
+To configure `halle-frontend`, you need access the config.js file directly under the src/ directory and specify your backend dev and prod apis.
 
 **_Note that the configuration needs to be passed in via `config.yaml` file, so make sure to change the name to `config.yaml`._**
 
@@ -57,7 +57,7 @@ make build
 cd explorer/mintscan
 make build
 
-cd explorer/mintscan-binance-dex-frontend
+cd explorer/halle-frontend
 #comment out the following line in src/Root.js
 #import "./firebase"
 yarn dev  
