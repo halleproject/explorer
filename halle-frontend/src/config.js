@@ -3,8 +3,8 @@
  */
 
 const config = Object.freeze({
-	API_DEV: "http://explorer.hallechain.cn/v1",
-	API_PROD: "http://explorer.hallechain.cn/v1",
+	API_DEV: "http://127.0.0.1:5000/v1",
+	API_PROD: "http://127.0.0.1:5000/v1",
 });
 
 export default config;
