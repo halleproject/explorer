@@ -6,7 +6,7 @@ require (
 	github.com/Robbin-Liu/go-binance-sdk v0.0.0-20200728021042-9ef0842abec7
 	github.com/cosmos/cosmos-sdk v0.34.4-0.20200406170659-df5badaf4c2b
 	github.com/cosmos/ethermint v0.0.0-20190802135314-3f32f9ba8a1f
-	github.com/ethereum/go-ethereum v1.9.18 // indirect
+	github.com/ethereum/go-ethereum v1.9.18
 	//github.com/Robbin-Liu/go-binance-sdk v1.2.3
 
 	github.com/go-pg/pg v8.0.6+incompatible

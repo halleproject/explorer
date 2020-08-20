@@ -8,7 +8,7 @@ import (
 // InsertExportedData inserts exported block, transaction data
 // RunInTransaction runs a function in a transaction.
 // if function returns an error transaction is rollbacked, otherwise transaction is committed.
-func (db *Database) InsertExportedData(block []*schema.Block, txs []*schema.Transaction,
+func (db *Database) InsertExportedData(block []*schema.Block, txs []*schema.Transaction, contracts []*schema.Contract,
 	vals []*schema.Validator, precommits []*schema.PreCommit) error {
 
 	err := db.RunInTransaction(func(tx *pg.Tx) error {
@@ -21,6 +21,13 @@ func (db *Database) InsertExportedData(block []*schema.Block, txs []*schema.Tran
 
 		if len(txs) > 0 {
 			err := tx.Insert(&txs)
+			if err != nil {
+				return err
+			}
+		}
+
+		if len(contracts) > 0 {
+			err := tx.Insert(&contracts)
 			if err != nil {
 				return err
 			}

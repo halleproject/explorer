@@ -79,7 +79,7 @@ func (ex *Exporter) sync() error {
 
 	// Query latest block height on the active network
 	latestBlockHeight, err := ex.client.LatestBlockHeight()
-	if latestBlockHeight == -1 {
+	if latestBlockHeight == -1 { //todo parse exit
 		log.Fatal(errors.Wrap(err, "failed to query the latest block height on the active network"))
 	}
 
@@ -125,7 +125,7 @@ func (ex *Exporter) process(height int64) error {
 		return fmt.Errorf("failed to get block: %s", err)
 	}
 
-	resultTxs, err := ex.getTxs(block)
+	resultTxs, contracts, err := ex.getTxs(block)
 	if err != nil {
 		return fmt.Errorf("failed to get transactions: %s", err)
 	}
@@ -143,7 +143,7 @@ func (ex *Exporter) process(height int64) error {
 		return fmt.Errorf("failed to get validators: %s", err)
 	}
 
-	err = ex.db.InsertExportedData(resultBlock, resultTxs, resultValidators, resultPreCommits) //@todo 待修改
+	err = ex.db.InsertExportedData(resultBlock, resultTxs, contracts, resultValidators, resultPreCommits) //@todo 待修改
 	if err != nil {
 		return fmt.Errorf("failed to insert exporterd data: %s", err)
 	}

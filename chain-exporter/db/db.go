@@ -39,7 +39,8 @@ func (db *Database) Ping() error {
 // CreateTables creates database tables using object relational mapping (ORM)
 func (db *Database) CreateTables() error {
 	for _, model := range []interface{}{(*schema.Block)(nil), (*schema.PreCommit)(nil), (*schema.Transaction)(nil),
-		(*schema.Validator)(nil), (*schema.StatAssetInfoList1H)(nil), (*schema.StatAssetInfoList24H)(nil), (*schema.TwoAuth)(nil)} {
+		(*schema.Contract)(nil), (*schema.Validator)(nil), (*schema.StatAssetInfoList1H)(nil),
+		(*schema.StatAssetInfoList24H)(nil), (*schema.TwoAuth)(nil)} {
 		// Disable pluralization
 		orm.SetTableNameInflector(func(s string) string {
 			return s
@@ -100,6 +101,11 @@ func (db *Database) CreateTables() error {
 		}
 		_, err = db.Model(schema.Validator{}).
 			Exec(`CREATE INDEX validator_consensus_address_idx ON validator USING btree(consensus_address);`)
+		if err != nil {
+			return err
+		}
+		_, err = db.Model(schema.Contract{}).
+			Exec(`CREATE INDEX contract_contract_address_idx ON transaction USING btree(contract_address);`)
 		if err != nil {
 			return err
 		}
