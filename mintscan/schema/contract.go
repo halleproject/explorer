@@ -9,7 +9,7 @@ type Contract struct {
 	ContractAddress string `json:"contract_address" sql:"default:''"`
 	Memo            string `json:"memo"`
 
-	TotalSupply string `json:"total_supply" sql:",notnull,unique"`
+	TotalSupply string `json:"total_supply" sql:",notnull"`
 	Decimals    uint32 `json:"decimals"  sql:",notnull"`
 	Name        string `json:"name" sql:"notnull"`
 	Symbol      string `json:"symbol" sql:"notnull"`
