@@ -11,6 +11,6 @@ type Contract struct {
 
 	TotalSupply string `json:"total_supply" sql:",notnull"`
 	Decimals    uint32 `json:"decimals"  sql:",notnull"`
-	Name        string `json:"name" sql:"notnull"`
-	Symbol      string `json:"symbol" sql:"notnull"`
+	Name        string `json:"name" sql:",notnull"`
+	Symbol      string `json:"symbol" sql:",notnull"`
 }
