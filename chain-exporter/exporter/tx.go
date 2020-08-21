@@ -55,17 +55,22 @@ func (ex *Exporter) getTxs(block *tmctypes.ResultBlock) ([]*schema.Transaction, 
 
 					if len(ethTx.Data.Payload) > 0 {
 						isContract, _ := ex.client.IsContract(to)
+						contractAddress = toAddress
 						if isContract {
 							var fromAccAddress *sdk.AccAddress
-							contractAddress, fromAddress, toAddress, fromAccAddress, toAccAddr = ex.processERC20(
+							var toAccAddress *sdk.AccAddress
+							fromAddress, toAddress, fromAccAddress, toAccAddress = ex.processERC20(
 								ethTx.Data.Payload, fromAddress, toAddress, &amount)
 							if fromAccAddress != nil {
 								fromAccAddr = *fromAccAddress
 							}
+							if toAccAddress != nil {
+								toAccAddr = toAccAddress
+							}
 						}
 					}
 				} else {
-					//contract deployment
+					//合约部署 toAddress 为空
 					contractAddr := crypto.CreateAddress(from, ethTx.Data.AccountNonce)
 					newAccAddr := sdk.AccAddress(contractAddr.Bytes())
 					contractAddress = newAccAddr.String()
@@ -150,11 +155,11 @@ func (ex *Exporter) getTxs(block *tmctypes.ResultBlock) ([]*schema.Transaction, 
 	return transactions, contracts, nil
 }
 
-func (ex *Exporter) processERC20(data []byte, from, to string, amount *big.Int) (contractAddress, fromAddress, toAddress string, fromAccAddr, toAccAddr *sdk.AccAddress) {
+func (ex *Exporter) processERC20(data []byte, from, to string, amount *big.Int) (fromAddress, toAddress string, fromAccAddr, toAccAddr *sdk.AccAddress) {
 	abi := ex.client.GetABI()
 
-	contractAddress = to
 	fromAddress = from
+	toAddress = "not_erc20_method"
 
 	methodHash := hex.EncodeToString(data[0:4])
 	fmt.Println("==== data", methodHash, hex.EncodeToString(data))
@@ -206,7 +211,7 @@ func (ex *Exporter) processERC20(data []byte, from, to string, amount *big.Int) 
 			toAddress = toAccAddr.String()
 		}
 	} // switch
-	return contractAddress, fromAddress, toAddress, fromAccAddr, toAccAddr
+	return fromAddress, toAddress, fromAccAddr, toAccAddr
 }
 
 func (ex *Exporter) parseHalleTx(tx []byte) (*authx.StdTx, error) {

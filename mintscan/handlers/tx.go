@@ -88,8 +88,6 @@ func (t *Transaction) GetTxs(rw http.ResponseWriter, r *http.Request) {
 	return
 }
 
-
-
 // GetTxByHash returns certain transaction information by its tx hash
 func (t *Transaction) GetTxByHash(rw http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
@@ -143,7 +141,6 @@ func (t *Transaction) GetTxsByAddress(rw http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-
 	txs, err := t.db.QueryTxsByAddress(q_address, before, after, limit)
 
 	//txs, err := t.db.QueryTxsByAddress(before, after, limit)
@@ -180,7 +177,6 @@ func (t *Transaction) GetTxsByAddress(rw http.ResponseWriter, r *http.Request) {
 	utils.Respond(rw, result)
 	return
 }
-
 
 // GetTxsByType returns transactions based upon the request params
 func (t *Transaction) GetTxsByType(rw http.ResponseWriter, r *http.Request) {
@@ -284,14 +280,22 @@ func (t *Transaction) setTx(tx schema.Transaction) (*models.TxData, error) {
 	}
 
 	result := &models.TxData{
-		Height:     tx.Height,
-		Result:     txResult,
-		TxHash:     tx.TxHash,
-		Messages:   msgs,
-		Signatures: sigs,
-		Memo:       tx.Memo,
-		Code:       tx.Code,
-		Timestamp:  tx.Timestamp,
+		Height:          tx.Height,
+		Result:          txResult,
+		TxHash:          tx.TxHash,
+		FromAddress:     tx.FromAddress,
+		ToAddress:       tx.ToAddress,
+		ContractAddress: tx.ContractAddress,
+		Messages:        msgs,
+		Signatures:      sigs,
+		Memo:            tx.Memo,
+		Code:            tx.Code,
+		Timestamp:       tx.Timestamp,
+	}
+	if len(result.ContractAddress) > 0 {
+		contract, _ := t.db.QueryContractByAddress(result.ContractAddress)
+		result.ContractDecimals = contract.Decimals
+		result.ContractSymbol = contract.Symbol
 	}
 
 	return result, nil
@@ -321,17 +325,23 @@ func (t *Transaction) setTxs(txs []schema.Transaction) (*models.ResultTxs, error
 		}
 
 		tempData := &models.TxData{
-			ID:         tx.ID,
-			Height:     tx.Height,
-			Result:     txResult,
-			TxHash:     tx.TxHash,
+			ID:              tx.ID,
+			Height:          tx.Height,
+			Result:          txResult,
+			TxHash:          tx.TxHash,
 			FromAddress:     tx.FromAddress,
-			ToAddress:     tx.ToAddress,
-			Messages:   msgs,
-			Signatures: sigs,
-			Memo:       tx.Memo,
-			Code:       tx.Code,
-			Timestamp:  tx.Timestamp,
+			ToAddress:       tx.ToAddress,
+			ContractAddress: tx.ContractAddress,
+			Messages:        msgs,
+			Signatures:      sigs,
+			Memo:            tx.Memo,
+			Code:            tx.Code,
+			Timestamp:       tx.Timestamp,
+		}
+		if len(tempData.ContractAddress) > 0 {
+			contract, _ := t.db.QueryContractByAddress(tempData.ContractAddress)
+			tempData.ContractDecimals = contract.Decimals
+			tempData.ContractSymbol = contract.Symbol
 		}
 
 		data = append(data, *tempData)

@@ -207,17 +207,23 @@ func (a *Account) setTxs(txs []schema.Transaction) (*models.ResultTxs, error) {
 		}
 
 		tempData := &models.TxData{
-			ID:          tx.ID,
-			Height:      tx.Height,
-			Result:      txResult,
-			TxHash:      tx.TxHash,
-			FromAddress: tx.FromAddress,
-			ToAddress:   tx.ToAddress,
-			Messages:    msgs,
-			Signatures:  sigs,
-			Memo:        tx.Memo,
-			Code:        tx.Code,
-			Timestamp:   tx.Timestamp,
+			ID:              tx.ID,
+			Height:          tx.Height,
+			Result:          txResult,
+			TxHash:          tx.TxHash,
+			FromAddress:     tx.FromAddress,
+			ToAddress:       tx.ToAddress,
+			ContractAddress: tx.ContractAddress,
+			Messages:        msgs,
+			Signatures:      sigs,
+			Memo:            tx.Memo,
+			Code:            tx.Code,
+			Timestamp:       tx.Timestamp,
+		}
+		if len(tempData.ContractAddress) > 0 {
+			contract, _ := a.db.QueryContractByAddress(tempData.ContractAddress)
+			tempData.ContractDecimals = contract.Decimals
+			tempData.ContractSymbol = contract.Symbol
 		}
 
 		data = append(data, *tempData)

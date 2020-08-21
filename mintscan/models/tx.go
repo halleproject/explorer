@@ -33,17 +33,20 @@ type (
 
 	// TxData wraps tx data
 	TxData struct {
-		ID         int32       `json:"id,omitempty"`
-		Height     int64       `json:"height"`
-		Result     bool        `json:"result"`
-		TxHash     string      `json:"tx_hash"`
-		FromAddress     string  `json:"from_address"`
-		ToAddress     string      `json:"to_address"`
-		Messages   []Message   `json:"messages"`
-		Signatures []Signature `json:"signatures"`
-		Memo       string      `json:"memo"`
-		Code       uint32      `json:"code"`
-		Timestamp  time.Time   `json:"timestamp"`
+		ID               int32       `json:"id,omitempty"`
+		Height           int64       `json:"height"`
+		Result           bool        `json:"result"`
+		TxHash           string      `json:"tx_hash"`
+		FromAddress      string      `json:"from_address"`
+		ToAddress        string      `json:"to_address"`
+		ContractAddress  string      `json:"contract_address"`
+		ContractSymbol   string      `json:"contract_symbol"`
+		ContractDecimals uint32      `json:"contract_decimals"`
+		Messages         []Message   `json:"messages"`
+		Signatures       []Signature `json:"signatures"`
+		Memo             string      `json:"memo"`
+		Code             uint32      `json:"code"`
+		Timestamp        time.Time   `json:"timestamp"`
 	}
 
 	// Signature wraps tx signature

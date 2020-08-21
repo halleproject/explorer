@@ -450,3 +450,26 @@ func (db *Database) QueryAppVersion() (schema.AppVersion, error) {
 
 	return version, nil
 }
+
+func (db *Database) QueryContractByAddress(address string) (schema.Contract, error) {
+	c, exist := db.contracts.Load(address)
+	if exist {
+		return c.(schema.Contract), nil
+	}
+	var contract schema.Contract
+	err := db.Model(&contract).
+		Where("contract_address = ?", address).
+		Select()
+
+	if err == pg.ErrNoRows {
+		return contract, fmt.Errorf("no rows in contract table: %s", err)
+	}
+
+	if err != nil {
+		return contract, fmt.Errorf("unexpected database error: %s", err)
+	}
+
+	db.contracts.Store(address, contract)
+
+	return contract, nil
+}
