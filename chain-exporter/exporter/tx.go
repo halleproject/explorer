@@ -55,8 +55,8 @@ func (ex *Exporter) getTxs(block *tmctypes.ResultBlock) ([]*schema.Transaction, 
 
 					if len(ethTx.Data.Payload) > 0 {
 						isContract, _ := ex.client.IsContract(to)
-						contractAddress = toAddress
 						if isContract {
+							contractAddress = toAddress
 							var fromAccAddress *sdk.AccAddress
 							var toAccAddress *sdk.AccAddress
 							fromAddress, toAddress, fromAccAddress, toAccAddress = ex.processERC20(
@@ -111,6 +111,64 @@ func (ex *Exporter) getTxs(block *tmctypes.ResultBlock) ([]*schema.Transaction, 
 				fromAddress = halleTx.FeePayer().String()
 				msgs := halleTx.GetMsgs()
 				switch msgs[0].(type) {
+				case ethtypes.MsgEthermint:
+					eth := msgs[0].(ethtypes.MsgEthermint)
+					fmt.Println("==== hello")
+					var amount *big.Int
+					amount = eth.Amount.BigInt()
+					memo = hex.EncodeToString(eth.Payload)
+					to := eth.To()
+					if to != nil {
+						newAccAddr := sdk.AccAddress(eth.To().Bytes())
+						toAddress = newAccAddr.String()
+
+						if len(eth.Payload) > 0 {
+							isContract, _ := ex.client.IsContract(to)
+							if isContract {
+								contractAddress = toAddress
+								var fromAccAddress *sdk.AccAddress
+								var toAccAddress *sdk.AccAddress
+								fromAddress, toAddress, fromAccAddress, toAccAddress = ex.processERC20(
+									eth.Payload, fromAddress, toAddress, amount)
+								if fromAccAddress == nil {
+									fromAccAddress = &eth.From
+								}
+								if toAccAddress == nil {
+									newAccAddr := sdk.AccAddress(eth.To().Bytes())
+									toAccAddress = &newAccAddr
+								}
+
+								msgEther := ethtypes.NewMsgEthermint(eth.AccountNonce, toAccAddress,
+									sdk.NewIntFromBigInt(amount), eth.GasLimit, eth.Price, eth.Payload, *fromAccAddress)
+								msgs := []sdk.Msg{msgEther}
+								msgsBz0, err := ex.cdc.MarshalJSON(msgs) //ethTx.GetMsgs())
+								if err != nil {
+									return nil, nil, err
+								}
+								msgsBz = string(msgsBz0)
+							}
+						}
+					} else {
+						//合约部署 toAddress 为空
+						fromAddr := common.BytesToAddress(eth.From.Bytes())
+						contractAddr := crypto.CreateAddress(fromAddr, eth.AccountNonce)
+						newAccAddr := sdk.AccAddress(contractAddr.Bytes())
+						contractAddress = newAccAddr.String()
+
+						contract := &schema.Contract{
+							Height:          tx.Height,
+							TxHash:          tx.Hash.String(),
+							FromAddress:     fromAddress,
+							ContractAddress: contractAddress,
+							Memo:            memo,
+						}
+						contract.TotalSupply, _ = ex.client.GetContractTotal(&contractAddr)
+						contract.Decimals, _ = ex.client.GetContractDecimals(&contractAddr)
+						contract.Name, _ = ex.client.GetContractName(&contractAddr)
+						contract.Symbol, _ = ex.client.GetContractSymbol(&contractAddr)
+
+						contracts = append(contracts, contract)
+					}
 				case bank.MsgSend:
 					msg, ok := msgs[0].(bank.MsgSend)
 					if ok {
