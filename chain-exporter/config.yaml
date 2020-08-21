@@ -19,15 +19,15 @@ mainnet:
 
 testnet:
   node: 
-    rpc_node: "tcp://192.168.3.100:26657"
-    accelerated_node: "tcp://192.168.3.100:26657"
-    api_server_endpoint: "http://192.168.3.100:8545"
-    explorer_api_endpoint: "tcp://192.168.3.100:26657"
+    rpc_node: "tcp://127.0.0.1:26657"
+    accelerated_node: "tcp://127.0.0.1:26657"
+    api_server_endpoint: "http://127.0.0.1:8545"
+    explorer_api_endpoint: "tcp://127.0.0.1:26657"
   database:
     host: "127.0.0.1"
     port: 5432
     user: "postgres"
-    password: "admin"
+    password: "Abcd1234"
     table: ""
   web:
     port: 5000
