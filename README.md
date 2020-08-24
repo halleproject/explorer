@@ -58,10 +58,9 @@ cd explorer/mintscan
 make build
 
 cd explorer/halle-frontend
-#comment out the following line in src/Root.js
-#import "./firebase"
-yarn dev  
-yarn build:dev  
+#access the config.js file directly under the src/ directory and specify your backend dev and prod apis
+yarn install
+yarn run dev
 ```    
 
 ## Database 
