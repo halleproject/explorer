@@ -92,7 +92,8 @@ export default function(blockData, cx, cell) {
 			const type = blockData?.messages?.[0].type;
 			if (!_.isNil(type)) {
 				if (type === txTypes.COSMOS.SEND) {
-					ret = blockData?.messages?.[0]?.value?.amount[0]?.denom;
+					ret = "hale"
+					// ret = blockData?.messages?.[0]?.value?.amount[0]?.denom;
 				} else if (type === txTypes.WEB3.SEND) ret = "hale";
 			}
 			if (!empty(ret)) {
