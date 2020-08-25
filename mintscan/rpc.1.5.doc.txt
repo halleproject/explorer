@@ -1,0 +1,44 @@
+区块链浏览器1.5版本接口调整
+
+新增了合约相关的功能，调整如下：
+
+1.地址的历史交易
+/v1/txs_address?address={address}
+/v1/txs_address?address={address}&contract_address={contract_address}
+
+与1.0版本一样，只传入地址的话，返回这个地址的历史记录，最新100条，例如：
+http://192.168.3.200:5000/v1/txs_address?address=halle1fjm43z0zjxy4ff3c2wh352az5k78chednuq55v
+
+新增参数 contract_address ，可以查询一个地址的某个合约历史记录，最新100条，例如：
+http://192.168.3.200:5000/v1/txs_address?contract_address=halle1gry4ty4y6l5lud9ana8ngvd9hnz3xg3mk09k0d&address=halle1fjm43z0zjxy4ff3c2wh352az5k78chednuq55v
+
+
+【如果查合约地址的历史记录，请参考账号历史记录】
+
+
+2.账号信息与历史记录
+/v1/account/{address}
+/v1/account/txs/{address}
+
+在浏览器前端页面，为了显示交易条数，返回一个地址的账号信息：关键是地址的随机数，发送一个交易增加一次，例如：
+http://192.168.3.200:5000/v1/account/halle1fjm43z0zjxy4ff3c2wh352az5k78chednuq55v
+
+如果显示这个地址的历史交易，也可以调用 /v1/account/txs/{address} ，最新10条，例如：
+http://192.168.3.200:5000/v1/account/txs/halle1fjm43z0zjxy4ff3c2wh352az5k78chednuq55v
+
+/v1/account/txs/{address} 如果传入的是合约地址，则返回这个合约地址的历史交易，最新10条，例如：
+http://192.168.3.200:5000/v1/account/txs/halle1fjm43z0zjxy4ff3c2wh352az5k78chednuq55v
+
+
+3.交易列表
+/v1/txs
+
+在浏览器前端页面，显示交易列表，调用这个rpc，返回最新交易列表，最新100条，例如：
+http://192.168.3.200:5000/v1/txs
+
+返回的结果，如果 contract_address 非空，则代表这是一条合约交易， contract_symbol 是合约币的简称， contract_decimals 是精度，例如：
+{"id":38,"height":19935,"result":true,"tx_hash":"EBF7B5D404854C050721624DD8500D7AAF2BB64023D89435AE699AA5634EF9D4","from_address":"halle1fjm43z0zjxy4ff3c2wh352az5k78chednuq55v","to_address":"halle1qfkffsjsv6688kf9dr9g89ggwl9ntqtyg6y4s6","contract_address":"halle1gry4ty4y6l5lud9ana8ngvd9hnz3xg3mk09k0d","contract_symbol":"CHAMC","contract_decimals":8,"messages":[{"type":"ethermint/MsgEthermint","value":{"to":"halle1qfkffsjsv6688kf9dr9g89ggwl9ntqtyg6y4s6","gas":"20000000","from":"halle1fjm43z0zjxy4ff3c2wh352az5k78chednuq55v","input":"qQWcuwAAAAAAAAAAAAAAAAJslMJQZrRz2SVoyoOVCHfLNYFkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQ=","nonce":"38","value":"100","gasPrice":"20"}}],"signatures":[],"memo":"a9059cbb000000000000000000000000026c94c25066b473d92568ca83950877cb3581640000000000000000000000000000000000000000000000000000000000000064","code":0,"timestamp":"2020-08-21T10:32:49.193062Z"},
+
+特别的，如果是合约交易， to_address 为空，则代表这是一条合约部署交易，例如：
+{"id":10,"height":18509,"result":true,"tx_hash":"119E45C6EA78CD24CD05CF1B42D00C66BD2BE1EEE8AE095B85CA63E318BFDA99","from_address":"halle1fjm43z0zjxy4ff3c2wh352az5k78chednuq55v","to_address":"","contract_address":"halle1gry4ty4y6l5lud9ana8ngvd9hnz3xg3mk09k0d","contract_symbol":"CHAMC","contract_decimals":8,"messages":[{"type":"ethermint/MsgEthermint","value":{"to":null,"gas":"1310779","from":"halle1fjm43z0zjxy4ff3c2wh352az5k78chednuq55v","input":"...","nonce":"10","value":"0","gasPrice":"20"}}],"signatures":[],"memo":"...","code":0,"timestamp":"2020-08-21T08:12:04.08929Z"},
+
