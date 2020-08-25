@@ -132,7 +132,7 @@ func (t *Transaction) GetTxsByAddress(rw http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var q_address string
+	var q_address, q_addressContract string
 	if len(r.URL.Query()["address"]) > 0 {
 		q_address = r.URL.Query()["address"][0]
 	} else {
@@ -140,8 +140,11 @@ func (t *Transaction) GetTxsByAddress(rw http.ResponseWriter, r *http.Request) {
 		errors.ErrInvalidFormat(rw, http.StatusBadRequest)
 		return
 	}
+	if len(r.URL.Query()["contract_address"]) > 0 {
+		q_addressContract = r.URL.Query()["contract_address"][0]
+	}
 
-	txs, err := t.db.QueryTxsByAddress(q_address, before, after, limit)
+	txs, err := t.db.QueryTxsByAddress(q_address, q_addressContract, before, after, limit)
 
 	//txs, err := t.db.QueryTxsByAddress(before, after, limit)
 	if err != nil {

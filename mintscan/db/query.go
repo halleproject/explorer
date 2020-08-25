@@ -183,30 +183,55 @@ func (db *Database) QueryTxByHash(hash string) (schema.Transaction, error) {
 }
 
 // QueryTxsByType queries transactions with tx q_address
-func (db *Database) QueryTxsByAddress(q_address string, before int, after int, limit int) ([]schema.Transaction, error) {
+func (db *Database) QueryTxsByAddress(q_address string, q_addressContract string, before int, after int, limit int) ([]schema.Transaction, error) {
 	txs := make([]schema.Transaction, 0)
 
 	var err error
 
-	switch {
-	case before > 0:
-		err = db.Model(&txs).
-			Where("(from_address = ? OR to_address=?)  AND id < ?", q_address, q_address, before).
-			Limit(limit).
-			Order("id DESC").
-			Select()
-	case after >= 0:
-		err = db.Model(&txs).
-			Where("(from_address = ? OR to_address=?) AND id > ?", q_address, q_address, after).
-			Limit(limit).
-			Order("id ASC").
-			Select()
-	default:
-		err = db.Model(&txs).
-			Where("(from_address = ? OR to_address=?)  ", q_address, q_address).
-			Limit(limit).
-			Order("id DESC").
-			Select()
+	if q_addressContract == "" {
+		switch {
+		case before > 0:
+			err = db.Model(&txs).
+				Where("(from_address = ? OR to_address = ?) AND id < ?", q_address, q_address, before).
+				Limit(limit).
+				Order("id DESC").
+				Select()
+		case after >= 0:
+			err = db.Model(&txs).
+				Where("(from_address = ? OR to_address = ?) AND id > ?", q_address, q_address, after).
+				Limit(limit).
+				Order("id ASC").
+				Select()
+		default:
+			err = db.Model(&txs).
+				Where("(from_address = ? OR to_address=?)  ", q_address, q_address).
+				Limit(limit).
+				Order("id DESC").
+				Select()
+		}
+	} else {
+		switch {
+		case before > 0:
+			err = db.Model(&txs).
+				Where("(from_address = ? OR to_address = ?) And contract_address = ? AND id < ?",
+					q_address, q_address, q_addressContract, before).
+				Limit(limit).
+				Order("id DESC").
+				Select()
+		case after >= 0:
+			err = db.Model(&txs).
+				Where("(from_address = ? OR to_address = ?) And contract_address = ? AND id > ?", q_address, q_address, q_addressContract, after).
+				Limit(limit).
+				Order("id ASC").
+				Select()
+		default:
+			err = db.Model(&txs).
+				Where("(from_address = ? OR to_address=?) And contract_address = ?", q_address, q_address, q_addressContract).
+				Limit(limit).
+				Order("id DESC").
+				Select()
+		}
+
 	}
 
 	if err == pg.ErrNoRows {
