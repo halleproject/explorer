@@ -47,12 +47,14 @@ export default function(data, cx, cell, account) {
 		case "Value": {
 			return (
 				<>
-					{Number(data.messages[0].value.value) !== 0 ? (
+					{data.messages[0].type == "cosmos-sdk/MsgSend" ? (
+						<div className={cx("number-display")}>
+							<Decimal value={divide(data.messages[0].value.amount[0].amount, consts.NUM.BASE_MULT)} fontSizeBase={13} />
+						</div>
+					) : (
 						<div className={cx("number-display")}>
 							<Decimal value={divide(data.messages[0].value.value, consts.NUM.BASE_MULT)} fontSizeBase={13} />
 						</div>
-					) : (
-						"-"
 					)}
 				</>
 			);
