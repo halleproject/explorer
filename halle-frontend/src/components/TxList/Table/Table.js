@@ -28,7 +28,7 @@ export default function(props) {
 		path: consts.API.TXLIST,
 		pageSize: PAGE_SIZE,
 		pagingProperty: BASE_PROPERTY,
-		limit: 60,
+		limit: 20,
 		resolve: v => v,
 		updateQuery: "txID",
 	});

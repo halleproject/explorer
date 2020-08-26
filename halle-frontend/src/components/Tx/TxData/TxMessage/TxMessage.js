@@ -84,11 +84,16 @@ export default function({msg, txData}) {
 											{/*		{divide(v.amount, consts.NUM.BASE_MULT)} {v.denom}*/}
 											{/*	</span>*/}
 											{/*))}*/}
-											{_.map(value.amount, v => (
-												<span key={value.to_address}>
-													{divide(v.amount, consts.NUM.BASE_MULT)} hale
+												{txData.contract_symbol == "" ? (
+														<span key={value.to_address}>
+													{divide(txData.messages[0].value.value, consts.NUM.BASE_MULT)} HALE
 												</span>
-											))}
+														):(
+														<span key={value.to_address}>
+													{divide(txData.messages[0].value.value, consts.NUM.BASE_CHMCMULT)} CHMC
+												</span>
+													)}
+
 										</li>
 									</ul>
 								</div>
@@ -118,11 +123,15 @@ export default function({msg, txData}) {
 									<ul className={cx("value-wrapper")}>
 										<li className={cx("label")}>Value</li>
 										<li className={cx("value")}>
-											{
-												<span key={value.address}>
-													{divide(value?.value, consts.NUM.BASE_MULT)} {consts.DENOM}
+											{txData.contract_symbol == "" ? (
+												<span key={value.to_address}>
+													{divide(txData.messages[0].value.value, consts.NUM.BASE_MULT)} {consts.DENOM}
 												</span>
-											}
+											):(
+												<span key={value.to_address}>
+													{divide(txData.messages[0].value.value, consts.NUM.BASE_CHMCMULT)} {consts.DENOMCHMC}
+												</span>
+											)}
 										</li>
 									</ul>
 								</div>

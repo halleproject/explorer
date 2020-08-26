@@ -14,8 +14,10 @@ export default Object.freeze({
 	// 	BASE: "https://api.coingecko.com/api/v3",
 	// 	GET_MARKET_CHART_RANGE: (id = "BNB", from, to) => `/coins/${id}/market_chart/range?vs_currency=usd&from=${from}&to=${to}`,
 	// },
-	DENOM: "hale",
+	DENOM: "HALE",
+	DENOMCHMC: "CHMC",
 	NUM: {
+		BASE_CHMCMULT: 1,
 		BASE_MULT: 1000000,
 		DEFAULT_DECIMALS: 6,
 		PAGE_SIZE: 20,

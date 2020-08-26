@@ -29,7 +29,7 @@ export default function(props) {
 		path: consts.API.BLOCKLIST,
 		pageSize: PAGE_SIZE,
 		pagingProperty: BASE_PROPERTY,
-		limit: 60,
+		limit: 20,
 		resolve: v => v,
 		updateQuery: "blockHeight",
 	});

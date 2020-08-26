@@ -53,7 +53,11 @@ export default function(data, cx, cell, account) {
 						</div>
 					) : (
 						<div className={cx("number-display")}>
-							<Decimal value={divide(data.messages[0].value.value, consts.NUM.BASE_MULT)} fontSizeBase={13} />
+							{data.contract_symbol== "CHMC" ? (
+								<Decimal value={divide(data.messages[0].value.value, consts.NUM.BASE_CHMCMULT)} fontSizeBase={13} />
+							):(
+								<Decimal value={divide(data.messages[0].value.value, consts.NUM.BASE_MULT)} fontSizeBase={13} />
+							)}
 						</div>
 					)}
 				</>

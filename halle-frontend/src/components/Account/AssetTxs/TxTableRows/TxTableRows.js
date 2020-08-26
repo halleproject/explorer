@@ -87,7 +87,11 @@ export default function({data, account = ""}) {
 					{pickData(data, cx, "Value", account)}
 				</TableCell>
 				<TableCell className={cx("tableCell", "text", "padding-left10")} align='left'>
-					hale
+					{data.contract_symbol == "" ? (
+							"HALE"
+					) : (
+						"CHMC"
+					)}
 				</TableCell>
 				<TableCell className={cx("tableCell", "padding-left10")} align='right'>
 					{data.height ? (

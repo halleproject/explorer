@@ -11,6 +11,7 @@ import Decimal from "src/components/common/Decimal";
 import qrSVG from "src/assets/account/qr_code.svg";
 import QrModal from "../QrModal";
 import DisplayLongString from "src/components/common/DisplayLongString";
+import consts from "../../../constants/consts";
 
 const cx = cn.bind(styles);
 export default function Address({account = {}, prices = [], assetData = {}}) {
@@ -84,6 +85,10 @@ export default function Address({account = {}, prices = [], assetData = {}}) {
 						<span className={cx("front")}>Number of </span>
 						<span className={cx("remove")}>transactions</span>
 					</li>
+					<li className={cx("value")}>
+						<span className={cx("front")}>Wallet </span>
+						<span className={cx("remove")}>balance</span>
+					</li>
 					{/*<li className={cx("dollars")}>*/}
 					{/*	<span className={cx("currency")}>$</span>*/}
 					{/*	{!_.isNil(total?.[0]) && !_.isNil(bnbPrice) ? (*/}
@@ -97,6 +102,18 @@ export default function Address({account = {}, prices = [], assetData = {}}) {
 				<ul className={cx("compare-wrapper")}>
 					<li className={cx("flexIt")}>
 						{assetData?.result?.value?.sequence}
+						{/*{prices.result}*/}
+					</li>
+					<li className={cx("flexIt")}>
+						<>
+							{assetData?.result?.value?.coins.[0].Balances == ""?(
+								0
+							):(
+								<Decimal fontSizeBase={13} value={divide(assetData?.result?.value?.coins.[0].Balances.[0].amount||0,1000000)} />
+							)
+
+							}
+						</>
 						{/*{prices.result}*/}
 					</li>
 					{/*<li className={cx("compareBNB")}>*/}

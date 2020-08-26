@@ -7,7 +7,7 @@ import {_, empty} from "src/lib/scripts";
 import {Table, TableBody} from "@material-ui/core";
 import NoTx from "src/components/common/NoTx";
 import {txTableHeader} from "src/components/TxList/Table/Table";
-import TxListTableRow, {TableRowThin} from "src/components/TxList/TableRow/TableRow";
+import TxListTableRow, {TableRowThin} from "src/components/TxList/TableRowHeight/TableRow";
 
 const cx = cn.bind(styles);
 
