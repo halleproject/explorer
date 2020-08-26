@@ -5,6 +5,7 @@
 1.地址的历史交易
 /v1/txs_address?address={address}
 /v1/txs_address?address={address}&contract_address={contract_address}
+/v1/txs_hale?address={address}
 
 与1.0版本一样，只传入地址的话，返回这个地址的历史记录，最新100条，例如：
 http://192.168.3.200:5000/v1/txs_address?address=halle1fjm43z0zjxy4ff3c2wh352az5k78chednuq55v
@@ -12,6 +13,9 @@ http://192.168.3.200:5000/v1/txs_address?address=halle1fjm43z0zjxy4ff3c2wh352az5
 新增参数 contract_address ，可以查询一个地址的某个合约历史记录，最新100条，例如：
 http://192.168.3.200:5000/v1/txs_address?contract_address=halle1gry4ty4y6l5lud9ana8ngvd9hnz3xg3mk09k0d&address=halle1fjm43z0zjxy4ff3c2wh352az5k78chednuq55v
 
+
+新增rpc /v1/txs_hale?address={address} ，返回一个地址的hale历史交易，【不包含合约交易】，最新100条，例如：
+http://192.168.3.200:5000/v1/txs_hale?address=halle1fjm43z0zjxy4ff3c2wh352az5k78chednuq55v
 
 【如果查合约地址的历史记录，请参考账号历史记录】
 
@@ -22,6 +26,8 @@ http://192.168.3.200:5000/v1/txs_address?contract_address=halle1gry4ty4y6l5lud9a
 
 在浏览器前端页面，为了显示交易条数，返回一个地址的账号信息：关键是地址的随机数，发送一个交易增加一次，例如：
 http://192.168.3.200:5000/v1/account/halle1fjm43z0zjxy4ff3c2wh352az5k78chednuq55v
+返回：
+{"height":"90782","result":{"type":"ethermint/EthAccount","value":{"account_number":0,"address":"halle1fjm43z0zjxy4ff3c2wh352az5k78chednuq55v","code_hash":"c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470","coins":[{"Balances":[{"amount":"9999999999999999981866877258","denom":"uhale"}],"Spendable":[{"amount":"9999999999999999981866877258","denom":"uhale"}]}],"public_key":"8WWOMkEEG2kzs/yurX3FqlYNhG9I1kWnLTvOioxLdn4Ru0cKEXWQ7XIYxykLNsFTZO2kJWIOeeryAVPWQP8dwgiXnrJdZg==","sequence":65}}}
 
 如果显示这个地址的历史交易，也可以调用 /v1/account/txs/{address} ，最新10条，例如：
 http://192.168.3.200:5000/v1/account/txs/halle1fjm43z0zjxy4ff3c2wh352az5k78chednuq55v
