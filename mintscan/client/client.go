@@ -236,21 +236,29 @@ func (c Client) AssetTxs(txAsset string, page int, rows int) (models.AssetTxs, e
 
 // Account returns account information given an account address
 func (c Client) Account(address string) (models.Account, error) {
-	fmt.Printf("=================Client Account 1===============\n")
-
 	resp, err := c.apiClient.R().Get("/auth/accounts/" + address)
 	if err != nil {
 		return models.Account{}, err
 	}
 
 	var account models.Account
-	fmt.Printf(string(resp.Body()))
-	fmt.Printf("=================Client Account 2===============\n")
-
 	err = json.Unmarshal(resp.Body(), &account)
 	if err != nil {
 		return models.Account{}, err
 	}
+
+	resp, err = c.apiClient.R().Get("/bank/balances/" + address)
+	if err != nil {
+		return models.Account{}, err
+	}
+
+	var accountBal models.AccountBalances
+	err = json.Unmarshal(resp.Body(), &accountBal)
+	if err != nil {
+		return models.Account{}, err
+	}
+
+	account.Result.Value.Coins = append(account.Result.Value.Coins, accountBal.Result)
 
 	return account, nil
 }
