@@ -27,6 +27,20 @@ type Account struct {
 	} `json:"result"`
 }
 
+type AccountBalances struct {
+	Height string `json:"height"`
+	Result struct {
+		Balances []struct {
+			Amount string `json:"amount"`
+			Denom  string `json:"denom"`
+		} `json:"Balances"`
+		Spendable []struct {
+			Amount string `json:"amount"`
+			Denom  string `json:"denom"`
+		} `json:"Spendable"`
+	} `json:"result"`
+}
+
 // AccountTxs defines the structure for asset transactions
 type AccountTxs struct {
 	TxNums  int `json:"txNums"`

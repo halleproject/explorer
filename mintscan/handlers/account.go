@@ -153,7 +153,7 @@ func (a *Account) GetAccountTxs(rw http.ResponseWriter, r *http.Request) {
 	if err == nil { //contract address
 		txs, err = a.db.QueryTxsByContractAddress(address, (page-1)*rows, -1, rows)
 	} else {
-		txs, err = a.db.QueryTxsByAddress(address, (page-1)*rows, -1, rows)
+		txs, err = a.db.QueryTxsByAddress(address, "", (page-1)*rows, -1, rows)
 	}
 	if err != nil {
 		a.l.Printf("failed to query txs: %s\n", err)
