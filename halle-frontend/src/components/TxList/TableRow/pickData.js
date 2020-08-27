@@ -58,7 +58,7 @@ export default function(blockData, cx, cell) {
 			//if (blockData?.messages?.[0]?.type !== txTypes.COSMOS.SEND) return "";
 			// if (blockData?.messages?.[0]?.value?.outputs.length > 1) return <span>Multiple Address</span>;
 			// const address = `${blockData?.messages?.[0]?.value?.outputs?.[0]?.address}`;
-			const address = `${blockData?.to_address}`;
+			const address = `${blockData?.to_address||blockData?.contract_address}`;
 			return (
 				<>
 					<SvgDisplay svgSrc={greenArrowSVG} customClass={"upsideDown"} />
