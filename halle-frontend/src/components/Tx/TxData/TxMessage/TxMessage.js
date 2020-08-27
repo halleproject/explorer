@@ -86,11 +86,11 @@ export default function({msg, txData}) {
 											{/*))}*/}
 												{txData.contract_symbol == "" ? (
 														<span key={value.to_address}>
-													{divide(txData.messages[0].value.value, consts.NUM.BASE_MULT)} HALE
+													{divide(txData.messages[0].value.value||txData.messages[0].value.amount[0].amount, consts.NUM.BASE_MULT)} HALE
 												</span>
 														):(
 														<span key={value.to_address}>
-													{divide(txData.messages[0].value.value, consts.NUM.BASE_CHMCMULT)} CHMC
+													{divide(txData.messages[0].value.value||txData.messages[0].value.amount[0].amount, consts.NUM.BASE_CHMCMULT)} CHMC
 												</span>
 													)}
 
@@ -125,11 +125,11 @@ export default function({msg, txData}) {
 										<li className={cx("value")}>
 											{txData.contract_symbol == "" ? (
 												<span key={value.to_address}>
-													{divide(txData.messages[0].value.value, consts.NUM.BASE_MULT)} {consts.DENOM}
+													{divide(txData.messages[0].value.value||txData.messages[0].value.amount[0].amount, consts.NUM.BASE_MULT)} {consts.DENOM}
 												</span>
 											):(
 												<span key={value.to_address}>
-													{divide(txData.messages[0].value.value, consts.NUM.BASE_CHMCMULT)} {consts.DENOMCHMC}
+													{divide(txData.messages[0].value.value||txData.messages[0].value.amount[0].amount, consts.NUM.BASE_CHMCMULT)} {consts.DENOMCHMC}
 												</span>
 											)}
 										</li>

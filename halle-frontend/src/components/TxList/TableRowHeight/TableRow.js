@@ -73,10 +73,11 @@ export default function({blockData}) {
 				</span>
 			</TableCell>
 			<TableCell className={cx("tableCell", "valueCell", "padding-right10")} align='right'>
+
 				{blockData.memo =="" ? (
-					divide(blockData.messages[0].value.value, consts.NUM.BASE_MULT)
+					divide(blockData.messages[0].value.value||blockData.messages[0].value.amount[0].amount, consts.NUM.BASE_MULT)
 				) : (
-					divide(blockData.messages[0].value.value, consts.NUM.BASE_CHMCMULT)
+					divide(blockData.messages[0].value.value||blockData.messages[0].value.amount[0].amount, consts.NUM.BASE_CHMCMULT)
 				)}
 			</TableCell>
 			<TableCell className={cx("tablePointerMiniCell", "padding-left10")} align='left'>

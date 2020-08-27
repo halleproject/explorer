@@ -106,7 +106,7 @@ export default function Address({account = {}, prices = [], assetData = {}}) {
 					</li>
 					<li className={cx("flexIt")}>
 						<>
-							{assetData?.result?.value?.coins.[0].Balances == ""?(
+							{assetData?.result?.value?.coins?.[0].Balances == ""?(
 								0
 							):(
 								<Decimal fontSizeBase={13} value={divide(assetData?.result?.value?.coins.[0].Balances.[0].amount||0,1000000)} />

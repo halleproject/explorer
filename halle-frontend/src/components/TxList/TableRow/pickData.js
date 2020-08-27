@@ -15,7 +15,7 @@ import {txCheckHTLT} from "src/components/Tx/TxData/TxCase";
 export const CELL_TYPES = Object.freeze(["Tx Hash", "Type", "From", "To", "Value", "Denom", "Time"]);
 
 const BASE_MULT = Math.pow(10, 6);
-const BASE_MULTCHMC = Math.pow(1, 1);
+const BASE_MULTCHMC = Math.pow(10, 18);
 
 export default function(blockData, cx, cell) {
 	switch (cell) {
@@ -78,8 +78,14 @@ export default function(blockData, cx, cell) {
 
 				// if (type === txTypes.WEB3.SEND) amount = Big.divide(blockData.messages[0]?.value.value, BASE_MULT);
 				// else if (type === txTypes.COSMOS.SEND) amount = Big.divide(blockData.messages[0]?.value?.amount[0]?.amount, BASE_MULT);
-				if (type =="") amount = Big.divide(blockData.messages[0]?.value.value, BASE_MULT);
-				else if (type == "CHMC") amount = Big.divide(blockData.messages[0]?.value.value, BASE_MULTCHMC);
+				if (blockData?.messages?.[0].type=== txTypes.COSMOS.SEND) {
+					if (type =="") 	amount = Big.divide(blockData.messages[0]?.value?.amount[0]?.amount, BASE_MULT);
+					else if (type == "CHMC") 	amount = Big.divide(blockData.messages[0]?.value?.amount[0]?.amount, BASE_MULTCHMC);
+
+				}else{
+					if (type =="") amount = Big.divide(blockData.messages[0]?.value.value, BASE_MULT);
+					else if (type == "CHMC") amount = Big.divide(blockData.messages[0]?.value.value, BASE_MULTCHMC);
+				}
 			}
 			if (!_.isNil(amount)) {
 				const split = amount.split(".");
