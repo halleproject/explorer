@@ -114,7 +114,7 @@ export default function Address({account = {}, prices = [], assetData = {}}) {
 
 							}
 						</>
-						{/*{prices.result}*/}
+						{/*{prices.result}*/}	
 					</li>
 					{/*<li className={cx("compareBNB")}>*/}
 					{/*	{!_.isNil(total?.[0]) ? (*/}
