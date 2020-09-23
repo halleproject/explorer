@@ -34,7 +34,7 @@ export default function(blockData, cx, cell) {
 			// TODO
 			//  pretty much divide all the cases
 			if (_.isNil(blockData?.messages)) return <Skeleton />;
-			let address = blockData?.messages.[0].value?.from||blockData?.messages.[0].value?.from_address;
+			let address = blockData?.messages?.[0]?.value?.from||blockData?.messages?.[0]?.value?.from_address;
 			/*
 			if (!_.isNil(blockData?.messages?.[0]?.value?.sender)) address = `${blockData?.messages?.[0]?.value?.sender}`;
 			else if (blockData?.messages?.[0]?.type === txTypes.COSMOS.SEND) address = `${blockData?.messages?.[0]?.value?.inputs?.[0]?.address}`;
@@ -58,7 +58,7 @@ export default function(blockData, cx, cell) {
 			//if (blockData?.messages?.[0]?.type !== txTypes.COSMOS.SEND) return "";
 			// if (blockData?.messages?.[0]?.value?.outputs.length > 1) return <span>Multiple Address</span>;
 			// const address = `${blockData?.messages?.[0]?.value?.outputs?.[0]?.address}`;
-			const address = `${blockData?.messages.[0].value?.to||blockData?.messages.[0].value?.to_address}`;
+			const address = `${blockData?.messages?.[0]?.value?.to||blockData?.messages?.[0]?.value?.to_address}`;
 			return (
 				<>
 					<SvgDisplay svgSrc={greenArrowSVG} customClass={"upsideDown"} />
