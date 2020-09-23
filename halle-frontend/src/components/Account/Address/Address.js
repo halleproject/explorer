@@ -109,12 +109,12 @@ export default function Address({account = {}, prices = [], assetData = {}}) {
 							{assetData?.result?.value?.coins?.[0].Balances == ""?(
 								0
 							):(
-								<Decimal fontSizeBase={13} value={divide(assetData?.result?.value?.coins.[0].Balances.[0].amount||0,1000000)} />
+								<Decimal fontSizeBase={13} value={divide(assetData?.result?.value?.coins?.[0]?.Balances?.[0]?.amount||0,1000000)} />
 							)
 
 							}
 						</>
-						{/*{prices.result}*/}	
+						{/*{prices.result}*/}
 					</li>
 					{/*<li className={cx("compareBNB")}>*/}
 					{/*	{!_.isNil(total?.[0]) ? (*/}
