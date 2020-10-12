@@ -8,13 +8,16 @@ import (
 // Txs defines the structure for transaction data for result block
 type (
 	Txs struct {
-		Height    int64     `json:"height"`
-		Result    bool      `json:"result"`
-		TxHash    string    `json:"tx_hash"`
-		Messages  []Message `json:"messages"`
-		Memo      string    `json:"memo"`
-		Code      uint32    `json:"code"`
-		Timestamp time.Time `json:"timestamp"`
+		Height           int64     `json:"height"`
+		Result           bool      `json:"result"`
+		TxHash           string    `json:"tx_hash"`
+		Messages         []Message `json:"messages"`
+		ContractAddress  string    `json:"contract_address"`
+		ContractSymbol   string    `json:"contract_symbol"`
+		ContractDecimals uint32    `json:"contract_decimals"`
+		Memo             string    `json:"memo"`
+		Code             uint32    `json:"code"`
+		Timestamp        time.Time `json:"timestamp"`
 	}
 
 	// Message wraps tx message

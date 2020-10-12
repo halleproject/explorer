@@ -115,6 +115,12 @@ func (b *Block) setBlocks(blocks []schema.Block) (*models.ResultBlocks, error) {
 					Timestamp: tx.Timestamp,
 				}
 
+				if len(tx.ContractAddress) > 0 {
+					contract, _ := b.db.QueryContractByAddress(tx.ContractAddress)
+					tempTx.ContractDecimals = contract.Decimals
+					tempTx.ContractSymbol = contract.Symbol
+				}
+
 				resultTxs = append(resultTxs, *tempTx)
 			}
 		}
