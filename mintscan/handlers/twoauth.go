@@ -67,6 +67,15 @@ func (ta *TwoAuth) Auth(rw http.ResponseWriter, r *http.Request) {
 		//fmt.Println(epochSeconds+indexs[i], pwd)
 		if pwd == uint32(passwd) {
 			hit = true
+			if !twoAuthInfo.Bind {
+				twoAuthInfo.Bind = true
+				err = ta.db.UpdateTwoAuth(&twoAuthInfo)
+				if err != nil {
+					ta.l.Printf("failed to update TwoAuth : %s", err)
+					return
+				}
+			}
+
 			break
 		}
 	}
@@ -161,20 +170,25 @@ func (ta *TwoAuth) Generate(rw http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if existed {
-		utils.Respond(rw, true)
-		return
-	}
-
 	twoAuthInfo := schema.TwoAuth{
 		Key:     CreateSecret(),
 		Address: address,
 	}
 
-	err = ta.db.InsertTwoAuth(&twoAuthInfo)
-	if err != nil {
-		ta.l.Printf("failed to insert TwoAuth : %s", err)
-		return
+	if existed {
+		//utils.Respond(rw, true)
+		err = ta.db.UpdateTwoAuth(&twoAuthInfo)
+		if err != nil {
+			ta.l.Printf("failed to update TwoAuth : %s", err)
+			return
+		}
+	} else {
+
+		err = ta.db.InsertTwoAuth(&twoAuthInfo)
+		if err != nil {
+			ta.l.Printf("failed to insert TwoAuth : %s", err)
+			return
+		}
 	}
 	//fmt.Println(twoAuthInfo.ID, twoAuthInfo.Key)
 	utils.Respond(rw, twoAuthInfo)

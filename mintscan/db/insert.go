@@ -49,6 +49,26 @@ func (db *Database) InsertTwoAuth(ta *schema.TwoAuth) error {
 	return nil
 }
 
+func (db *Database) UpdateTwoAuth(ta *schema.TwoAuth) error {
+
+	err := db.RunInTransaction(func(tx *pg.Tx) error {
+		if ta != nil {
+			err := tx.Update(ta)
+			if err != nil {
+				return err
+			}
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (db *Database) InsertAppVerion(av *schema.AppVersion) error {
 
 	err := db.RunInTransaction(func(tx *pg.Tx) error {
