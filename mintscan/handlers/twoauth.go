@@ -32,10 +32,11 @@ func NewTwoAuth(l *log.Logger, client *client.Client, db *db.Database) *TwoAuth 
 
 // GetTwoAuth creae new key and save DB, then return TwoAuth on the active chain
 func (ta *TwoAuth) Auth(rw http.ResponseWriter, r *http.Request) {
-	var id, passwd int
+	var address string
+	var passwd int
 
-	if len(r.URL.Query()["id"]) > 0 {
-		id, _ = strconv.Atoi(r.URL.Query()["id"][0])
+	if len(r.URL.Query()["address"]) > 0 {
+		address = r.URL.Query()["address"][0]
 	} else {
 		ta.l.Printf("failed to get id")
 		return
@@ -47,7 +48,7 @@ func (ta *TwoAuth) Auth(rw http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	twoAuthInfo, err := ta.db.QueryTwoAuthByID(int64(id))
+	twoAuthInfo, err := ta.db.QueryTwoAuthByAddress(address)
 	if err != nil {
 		ta.l.Printf("failed to query twoAuthInfo: %s", err)
 		return
@@ -144,7 +145,26 @@ func CreateSecret() string {
 
 // Generate returns TwoAuth information
 func (ta *TwoAuth) Generate(rw http.ResponseWriter, r *http.Request) {
-	twoAuthInfo := schema.TwoAuth{Key: CreateSecret()}
+
+	var address string
+
+	if len(r.URL.Query()["address"]) > 0 {
+		address = r.URL.Query()["address"][0]
+	} else {
+		ta.l.Printf("failed to get address")
+		return
+	}
+
+	// twoAuthInfo, err := ta.db.QueryTwoAuthByAddress(address)
+	// if err != nil {
+	// 	ta.l.Printf("failed to query twoAuthInfo: %s", err)
+	// 	return
+	// }
+
+	twoAuthInfo := schema.TwoAuth{
+		Key:     CreateSecret(),
+		Address: address,
+	}
 
 	err := ta.db.InsertTwoAuth(&twoAuthInfo)
 	if err != nil {
