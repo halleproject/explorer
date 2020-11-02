@@ -164,9 +164,18 @@ func (ta *TwoAuth) Generate(rw http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	existed, err := ta.db.QueryTwoAuthExistedByAddress(address)
+	bind,existed, err := ta.db.QueryTwoAuthExistedByAddress(address)
 	if err != nil {
 		ta.l.Printf("query address err: %s", err)
+		return
+	}
+
+	if bind{
+		utils.Respond(rw, struct{
+			Bind: bool `json:bind`
+		}{
+			Bind:true,
+		})
 		return
 	}
 

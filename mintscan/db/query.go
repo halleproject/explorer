@@ -513,7 +513,7 @@ func (db *Database) QueryValidatorByMoniker(address string) (schema.Validator, e
 }
 
 // QueryTwoAuthByID queries TwoAuth in a TwoAuth set saved in database
-func (db *Database) QueryTwoAuthExistedByAddress(address string) (bool, error) {
+func (db *Database) QueryTwoAuthExistedByAddress(address string) (bool, bool, error) {
 	var ta schema.TwoAuth
 
 	err := db.Model(&ta).
@@ -522,13 +522,13 @@ func (db *Database) QueryTwoAuthExistedByAddress(address string) (bool, error) {
 
 	if err != nil {
 		if err == pg.ErrNoRows {
-			return false, nil
+			return false, false, nil
 		}
 
-		return false, err
+		return false, false, err
 	}
 
-	return true, nil
+	return ta.Bind, true, nil
 }
 
 // QueryTwoAuthByID queries TwoAuth in a TwoAuth set saved in database
