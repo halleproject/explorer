@@ -155,18 +155,23 @@ func (ta *TwoAuth) Generate(rw http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// twoAuthInfo, err := ta.db.QueryTwoAuthByAddress(address)
-	// if err != nil {
-	// 	ta.l.Printf("failed to query twoAuthInfo: %s", err)
-	// 	return
-	// }
+	existed, err := ta.db.QueryTwoAuthExistedByAddress(address)
+	if err != nil {
+		ta.l.Printf("query address err: %s", err)
+		return
+	}
+
+	if existed {
+		utils.Respond(rw, true)
+		return
+	}
 
 	twoAuthInfo := schema.TwoAuth{
 		Key:     CreateSecret(),
 		Address: address,
 	}
 
-	err := ta.db.InsertTwoAuth(&twoAuthInfo)
+	err = ta.db.InsertTwoAuth(&twoAuthInfo)
 	if err != nil {
 		ta.l.Printf("failed to insert TwoAuth : %s", err)
 		return
