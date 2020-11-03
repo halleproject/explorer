@@ -59,6 +59,7 @@ func (ex *Exporter) Start() error {
 			err := ex.sync()
 			if err != nil {
 				ex.l.Printf("error - sync blockchain: %v\n", err)
+				debug.PrintStack()
 			}
 			ex.l.Println("finish - sync blockchain")
 			time.Sleep(time.Second * 1)
@@ -100,7 +101,7 @@ func (ex *Exporter) sync() error {
 		}
 
 		ex.l.Printf("synced block %d/%d \n", i, latestBlockHeight)
-		debug.PrintStack()
+
 	}
 
 	return nil
