@@ -1,6 +1,8 @@
 package db
 
 import (
+	"runtime/debug"
+
 	"github.com/chain-exporter/schema"
 	"github.com/go-pg/pg"
 )
@@ -15,6 +17,7 @@ func (db *Database) InsertExportedData(block []*schema.Block, txs []*schema.Tran
 		if len(block) > 0 {
 			err := tx.Insert(&block)
 			if err != nil {
+				debug.PrintStack()
 				return err
 			}
 		}
@@ -22,6 +25,7 @@ func (db *Database) InsertExportedData(block []*schema.Block, txs []*schema.Tran
 		if len(txs) > 0 {
 			err := tx.Insert(&txs)
 			if err != nil {
+				debug.PrintStack()
 				return err
 			}
 		}
@@ -29,6 +33,7 @@ func (db *Database) InsertExportedData(block []*schema.Block, txs []*schema.Tran
 		if len(contracts) > 0 {
 			err := tx.Insert(&contracts)
 			if err != nil {
+				debug.PrintStack()
 				return err
 			}
 		}
@@ -36,6 +41,7 @@ func (db *Database) InsertExportedData(block []*schema.Block, txs []*schema.Tran
 		if len(vals) > 0 {
 			err := tx.Insert(&vals)
 			if err != nil {
+				debug.PrintStack()
 				return err
 			}
 		}
@@ -43,6 +49,7 @@ func (db *Database) InsertExportedData(block []*schema.Block, txs []*schema.Tran
 		if len(precommits) > 0 {
 			err := tx.Insert(&precommits)
 			if err != nil {
+				debug.PrintStack()
 				return err
 			}
 		}
@@ -51,6 +58,7 @@ func (db *Database) InsertExportedData(block []*schema.Block, txs []*schema.Tran
 	})
 
 	if err != nil {
+		debug.PrintStack()
 		return err
 	}
 

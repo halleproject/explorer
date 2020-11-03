@@ -140,7 +140,7 @@ func (ex *Exporter) process(height int64) error {
 	resultPreCommits, err := ex.getPreCommits(block.Block.LastCommit, valSet)
 	if err != nil {
 		//return fmt.Errorf("failed to get precommits: %s", err)
-		fmt.Errorf("failed to get precommits: %s", err)
+		return fmt.Errorf("failed to get precommits: %s", err)
 	}
 
 	//@TODO 需要重新组合 多个接口输出的详细的Validators 数据
@@ -151,6 +151,7 @@ func (ex *Exporter) process(height int64) error {
 
 	err = ex.db.InsertExportedData(resultBlock, resultTxs, contracts, resultValidators, resultPreCommits) //@todo 待修改
 	if err != nil {
+		debug.PrintStack()
 		return fmt.Errorf("failed to insert exporterd data: %s", err)
 	}
 
