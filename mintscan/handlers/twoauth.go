@@ -69,7 +69,7 @@ func (ta *TwoAuth) Auth(rw http.ResponseWriter, r *http.Request) {
 			hit = true
 			if !twoAuthInfo.Bind {
 				twoAuthInfo.Bind = true
-				err = ta.db.UpdateTwoAuth(&twoAuthInfo)
+				err = ta.db.UpdateTwoAuth(twoAuthInfo)
 				if err != nil {
 					ta.l.Printf("failed to update TwoAuth : %s", err)
 					return
@@ -164,17 +164,17 @@ func (ta *TwoAuth) Generate(rw http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	bind,existed, err := ta.db.QueryTwoAuthExistedByAddress(address)
+	bind, existed, err := ta.db.QueryTwoAuthExistedByAddress(address)
 	if err != nil {
 		ta.l.Printf("query address err: %s", err)
 		return
 	}
 
-	if bind{
-		utils.Respond(rw, struct{
-			Bind: bool `json:bind`
+	if bind {
+		utils.Respond(rw, struct {
+			Bind bool `json:bind`
 		}{
-			Bind:true,
+			Bind: true,
 		})
 		return
 	}

@@ -11,6 +11,8 @@ import (
 	"github.com/chain-exporter/config"
 	"github.com/chain-exporter/db"
 
+	"runtime/debug"
+
 	"github.com/pkg/errors"
 
 	amino "github.com/tendermint/go-amino"
@@ -93,9 +95,12 @@ func (ex *Exporter) sync() error {
 	for i := dbHeight + 1; i <= latestBlockHeight; i++ {
 		err = ex.process(i)
 		if err != nil {
+
 			return err
 		}
+
 		ex.l.Printf("synced block %d/%d \n", i, latestBlockHeight)
+		debug.PrintStack()
 	}
 
 	return nil
