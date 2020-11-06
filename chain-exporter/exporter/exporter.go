@@ -62,7 +62,7 @@ func (ex *Exporter) Start() error {
 				debug.PrintStack()
 			}
 			ex.l.Println("finish - sync blockchain")
-			time.Sleep(time.Second * 1)
+			time.Sleep(time.Second * 3)
 		}
 	}()
 
@@ -77,13 +77,15 @@ func (ex *Exporter) sync() error {
 	// Query latest block height saved in database
 	dbHeight, err := ex.db.QueryLatestBlockHeight()
 	if dbHeight == -1 {
-		log.Fatal(errors.Wrap(err, "failed to query the latest block height saved in database"))
+		//log.Fatal(errors.Wrap(err, "failed to query the latest block height saved in database"))
+		return errors.Wrap(err, "failed to query the latest block height saved in database")
 	}
 
 	// Query latest block height on the active network
 	latestBlockHeight, err := ex.client.LatestBlockHeight()
 	if latestBlockHeight == -1 { //todo parse exit
-		log.Fatal(errors.Wrap(err, "failed to query the latest block height on the active network"))
+		//log.Fatal(errors.Wrap(err, "failed to query the latest block height on the active network"))
+		return errors.Wrap(err, "failed to query the latest block height on the active network")
 	}
 
 	// Synchronizing blocks from the scratch will return 0 and will ingest accordingly.
