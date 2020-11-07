@@ -513,6 +513,25 @@ func (db *Database) QueryValidatorByMoniker(address string) (schema.Validator, e
 }
 
 // QueryTwoAuthByID queries TwoAuth in a TwoAuth set saved in database
+func (db *Database) QueryTwoAuthByID(id int64) (*schema.TwoAuth, error) {
+	var ta schema.TwoAuth
+
+	err := db.Model(&ta).
+		Where("ID = ?", id).
+		Select()
+
+	if err == pg.ErrNoRows {
+		return &ta, fmt.Errorf("no rows in twoauth table: %s", err)
+	}
+
+	if err != nil {
+		return &ta, fmt.Errorf("unexpected database error: %s", err)
+	}
+
+	return &ta, nil
+}
+
+// QueryTwoAuthByID queries TwoAuth in a TwoAuth set saved in database
 func (db *Database) QueryTwoAuthExistedByAddress(address string) (bool, bool, error) {
 	var ta schema.TwoAuthForDCI
 
@@ -537,25 +556,6 @@ func (db *Database) QueryTwoAuthByAddressForDCI(address string) (*schema.TwoAuth
 
 	err := db.Model(&ta).
 		Where("Address = ?", address).
-		Select()
-
-	if err == pg.ErrNoRows {
-		return &ta, fmt.Errorf("no rows in twoauth table: %s", err)
-	}
-
-	if err != nil {
-		return &ta, fmt.Errorf("unexpected database error: %s", err)
-	}
-
-	return &ta, nil
-}
-
-// QueryTwoAuthByID queries TwoAuth in a TwoAuth set saved in database
-func (db *Database) QueryTwoAuthByID(id int64) (*schema.TwoAuthForDCI, error) {
-	var ta schema.TwoAuthForDCI
-
-	err := db.Model(&ta).
-		Where("ID = ?", id).
 		Select()
 
 	if err == pg.ErrNoRows {

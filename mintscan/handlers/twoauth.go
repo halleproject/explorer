@@ -31,6 +31,51 @@ func NewTwoAuth(l *log.Logger, client *client.Client, db *db.Database) *TwoAuth 
 }
 
 // GetTwoAuth creae new key and save DB, then return TwoAuth on the active chain
+func (ta *TwoAuth) Auth(rw http.ResponseWriter, r *http.Request) {
+	var id, passwd int
+
+	if len(r.URL.Query()["id"]) > 0 {
+		id, _ = strconv.Atoi(r.URL.Query()["id"][0])
+	} else {
+		ta.l.Printf("failed to get id")
+		return
+	}
+	if len(r.URL.Query()["passwd"]) > 0 {
+		passwd, _ = strconv.Atoi(r.URL.Query()["passwd"][0])
+	} else {
+		ta.l.Printf("failed to get passwd")
+		return
+	}
+
+	twoAuthInfo, err := ta.db.QueryTwoAuthByID(int64(id))
+	if err != nil {
+		ta.l.Printf("failed to query twoAuthInfo: %s", err)
+		return
+	}
+	//fmt.Println(id, passwd, twoAuthInfo.Key)
+
+	key, err := base32.StdEncoding.WithPadding(base32.NoPadding).DecodeString(twoAuthInfo.Key)
+	epochSeconds := time.Now().Unix()
+	epochSeconds /= 30
+	//fmt.Println(epochSeconds)
+	indexs := []int64{0, 1, -1, 2, -2}
+	hit := false
+	for i := 0; i < len(indexs); i++ {
+		epoch := toBytes(epochSeconds + indexs[i])
+		pwd := oneTimePassword(key, epoch)
+		//fmt.Println(epochSeconds+indexs[i], pwd)
+		if pwd == uint32(passwd) {
+			hit = true
+			break
+		}
+	}
+	//fmt.Println(hit)
+
+	utils.Respond(rw, hit)
+	return
+}
+
+// GetTwoAuth creae new key and save DB, then return TwoAuth on the active chain
 func (ta *TwoAuth) AuthForDCI(rw http.ResponseWriter, r *http.Request) {
 	var address string
 	var passwd int
@@ -198,6 +243,20 @@ func (ta *TwoAuth) GenerateForDCI(rw http.ResponseWriter, r *http.Request) {
 			ta.l.Printf("failed to insert TwoAuth : %s", err)
 			return
 		}
+	}
+	//fmt.Println(twoAuthInfo.ID, twoAuthInfo.Key)
+	utils.Respond(rw, twoAuthInfo)
+	return
+}
+
+// Generate returns TwoAuth information
+func (ta *TwoAuth) Generate(rw http.ResponseWriter, r *http.Request) {
+	twoAuthInfo := schema.TwoAuth{Key: CreateSecret()}
+
+	err := ta.db.InsertTwoAuth(&twoAuthInfo)
+	if err != nil {
+		ta.l.Printf("failed to insert TwoAuth : %s", err)
+		return
 	}
 	//fmt.Println(twoAuthInfo.ID, twoAuthInfo.Key)
 	utils.Respond(rw, twoAuthInfo)

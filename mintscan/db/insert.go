@@ -8,7 +8,7 @@ import (
 )
 
 func (db *Database) CreateTables() error {
-	for _, model := range []interface{}{&schema.TwoAuthForDCI{}, &schema.AppVersion{}} {
+	for _, model := range []interface{}{&schema.TwoAuth{}, &schema.TwoAuthForDCI{}, &schema.AppVersion{}} {
 		// Disable pluralization
 		orm.SetTableNameInflector(func(s string) string {
 			return s
@@ -54,6 +54,26 @@ func (db *Database) UpdateTwoAuthForDCI(ta *schema.TwoAuthForDCI) error {
 	err := db.RunInTransaction(func(tx *pg.Tx) error {
 		if ta != nil {
 			err := tx.Update(ta)
+			if err != nil {
+				return err
+			}
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (db *Database) InsertTwoAuth(ta *schema.TwoAuth) error {
+
+	err := db.RunInTransaction(func(tx *pg.Tx) error {
+		if ta != nil {
+			err := tx.Insert(ta)
 			if err != nil {
 				return err
 			}

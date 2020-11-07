@@ -8,6 +8,11 @@ type TwoAuthForDCI struct {
 	Bind    bool   `json:"bind"`
 }
 
+type TwoAuth struct {
+	ID  int32  `json:"id" sql:",pk"`
+	Key string `json:"key" sql:",notnull"`
+}
+
 // type TwoAuth struct {
 // 	//ID      int32  `json:"id" sql:",pk"`
 // 	Key     string `json:"key" sql:",notnull"`

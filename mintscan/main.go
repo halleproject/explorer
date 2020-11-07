@@ -89,8 +89,8 @@ func main() {
 	getR.HandleFunc("/txs_address", handlers.NewTransaction(l, client, db).GetTxsByAddress)
 	getR.HandleFunc("/txs_hale", handlers.NewTransaction(l, client, db).GetHaleTxsByAddress)
 	getR.HandleFunc("/txs_contract", handlers.NewTransaction(l, client, db).GetTxsByContractAddress)
-	//getR.HandleFunc("/two_auth/generate", handlers.NewTwoAuth(l, client, db).Generate)
-	//getR.HandleFunc("/two_auth/auth", handlers.NewTwoAuth(l, client, db).Auth)
+	getR.HandleFunc("/two_auth/generate", handlers.NewTwoAuth(l, client, db).Generate)
+	getR.HandleFunc("/two_auth/auth", handlers.NewTwoAuth(l, client, db).Auth)
 	getR.HandleFunc("/two_auth/generateDCI", handlers.NewTwoAuth(l, client, db).GenerateForDCI)
 	getR.HandleFunc("/two_auth/authDCI", handlers.NewTwoAuth(l, client, db).AuthForDCI)
 
