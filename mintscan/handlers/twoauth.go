@@ -31,7 +31,7 @@ func NewTwoAuth(l *log.Logger, client *client.Client, db *db.Database) *TwoAuth 
 }
 
 // GetTwoAuth creae new key and save DB, then return TwoAuth on the active chain
-func (ta *TwoAuth) Auth(rw http.ResponseWriter, r *http.Request) {
+func (ta *TwoAuth) AuthForDCI(rw http.ResponseWriter, r *http.Request) {
 	var address string
 	var passwd int
 
@@ -48,7 +48,7 @@ func (ta *TwoAuth) Auth(rw http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	twoAuthInfo, err := ta.db.QueryTwoAuthByAddress(address)
+	twoAuthInfo, err := ta.db.QueryTwoAuthByAddressForDCI(address)
 	if err != nil {
 		ta.l.Printf("failed to query twoAuthInfo: %s", err)
 		return
@@ -69,7 +69,7 @@ func (ta *TwoAuth) Auth(rw http.ResponseWriter, r *http.Request) {
 			hit = true
 			if !twoAuthInfo.Bind {
 				twoAuthInfo.Bind = true
-				err = ta.db.UpdateTwoAuth(twoAuthInfo)
+				err = ta.db.UpdateTwoAuthForDCI(twoAuthInfo)
 				if err != nil {
 					ta.l.Printf("failed to update TwoAuth : %s", err)
 					return
@@ -153,7 +153,7 @@ func CreateSecret() string {
 }
 
 // Generate returns TwoAuth information
-func (ta *TwoAuth) Generate(rw http.ResponseWriter, r *http.Request) {
+func (ta *TwoAuth) GenerateForDCI(rw http.ResponseWriter, r *http.Request) {
 
 	var address string
 
@@ -179,21 +179,21 @@ func (ta *TwoAuth) Generate(rw http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	twoAuthInfo := schema.TwoAuth{
+	twoAuthInfo := schema.TwoAuthForDCI{
 		Key:     CreateSecret(),
 		Address: address,
 	}
 
 	if existed {
 		//utils.Respond(rw, true)
-		err = ta.db.UpdateTwoAuth(&twoAuthInfo)
+		err = ta.db.UpdateTwoAuthForDCI(&twoAuthInfo)
 		if err != nil {
 			ta.l.Printf("failed to update TwoAuth : %s", err)
 			return
 		}
 	} else {
 
-		err = ta.db.InsertTwoAuth(&twoAuthInfo)
+		err = ta.db.InsertTwoAuthForDCI(&twoAuthInfo)
 		if err != nil {
 			ta.l.Printf("failed to insert TwoAuth : %s", err)
 			return

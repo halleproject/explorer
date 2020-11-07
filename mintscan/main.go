@@ -4,12 +4,13 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"github.com/rs/cors"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
 	"time"
+
+	"github.com/rs/cors"
 
 	"github.com/cosmostation/mintscan-binance-dex-backend/mintscan/client"
 	"github.com/cosmostation/mintscan-binance-dex-backend/mintscan/config"
@@ -88,8 +89,11 @@ func main() {
 	getR.HandleFunc("/txs_address", handlers.NewTransaction(l, client, db).GetTxsByAddress)
 	getR.HandleFunc("/txs_hale", handlers.NewTransaction(l, client, db).GetHaleTxsByAddress)
 	getR.HandleFunc("/txs_contract", handlers.NewTransaction(l, client, db).GetTxsByContractAddress)
-	getR.HandleFunc("/two_auth/generate", handlers.NewTwoAuth(l, client, db).Generate)
-	getR.HandleFunc("/two_auth/auth", handlers.NewTwoAuth(l, client, db).Auth)
+	//getR.HandleFunc("/two_auth/generate", handlers.NewTwoAuth(l, client, db).Generate)
+	//getR.HandleFunc("/two_auth/auth", handlers.NewTwoAuth(l, client, db).Auth)
+	getR.HandleFunc("/two_auth/generateDCI", handlers.NewTwoAuth(l, client, db).GenerateForDCI)
+	getR.HandleFunc("/two_auth/authDCI", handlers.NewTwoAuth(l, client, db).AuthForDCI)
+
 	getR.HandleFunc("/app_version/set", handlers.NewAppVersion(l, client, db).SetVersion)
 	getR.HandleFunc("/app_version/get", handlers.NewAppVersion(l, client, db).GetVersion)
 

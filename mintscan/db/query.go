@@ -514,7 +514,7 @@ func (db *Database) QueryValidatorByMoniker(address string) (schema.Validator, e
 
 // QueryTwoAuthByID queries TwoAuth in a TwoAuth set saved in database
 func (db *Database) QueryTwoAuthExistedByAddress(address string) (bool, bool, error) {
-	var ta schema.TwoAuth
+	var ta schema.TwoAuthForDCI
 
 	err := db.Model(&ta).
 		Where("Address = ?", address).
@@ -532,8 +532,8 @@ func (db *Database) QueryTwoAuthExistedByAddress(address string) (bool, bool, er
 }
 
 // QueryTwoAuthByID queries TwoAuth in a TwoAuth set saved in database
-func (db *Database) QueryTwoAuthByAddress(address string) (*schema.TwoAuth, error) {
-	var ta schema.TwoAuth
+func (db *Database) QueryTwoAuthByAddressForDCI(address string) (*schema.TwoAuthForDCI, error) {
+	var ta schema.TwoAuthForDCI
 
 	err := db.Model(&ta).
 		Where("Address = ?", address).
@@ -551,8 +551,8 @@ func (db *Database) QueryTwoAuthByAddress(address string) (*schema.TwoAuth, erro
 }
 
 // QueryTwoAuthByID queries TwoAuth in a TwoAuth set saved in database
-func (db *Database) QueryTwoAuthByID(id int64) (*schema.TwoAuth, error) {
-	var ta schema.TwoAuth
+func (db *Database) QueryTwoAuthByID(id int64) (*schema.TwoAuthForDCI, error) {
+	var ta schema.TwoAuthForDCI
 
 	err := db.Model(&ta).
 		Where("ID = ?", id).
