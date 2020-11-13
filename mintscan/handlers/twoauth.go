@@ -12,10 +12,13 @@ import (
 	"strings"
 	"time"
 
+	sdk "github.com/binance-chain/go-sdk/common/types"
 	"github.com/cosmostation/mintscan-binance-dex-backend/mintscan/client"
 	"github.com/cosmostation/mintscan-binance-dex-backend/mintscan/db"
+	"github.com/cosmostation/mintscan-binance-dex-backend/mintscan/errors"
 	"github.com/cosmostation/mintscan-binance-dex-backend/mintscan/schema"
 	"github.com/cosmostation/mintscan-binance-dex-backend/mintscan/utils"
+	ethcmn "github.com/ethereum/go-ethereum/common"
 )
 
 // TwoAuth is a TwoAuth handler
@@ -261,4 +264,44 @@ func (ta *TwoAuth) Generate(rw http.ResponseWriter, r *http.Request) {
 	//fmt.Println(twoAuthInfo.ID, twoAuthInfo.Key)
 	utils.Respond(rw, twoAuthInfo)
 	return
+}
+
+func (ta *TwoAuth) GetHalleByEth(rw http.ResponseWriter, r *http.Request) {
+
+	var q_address string
+	if len(r.URL.Query()["address"]) > 0 {
+		q_address = r.URL.Query()["address"][0]
+	} else {
+		//address 为必填项
+		errors.ErrInvalidFormat(rw, http.StatusBadRequest)
+		return
+	}
+
+	acc, err := sdk.AccAddressFromHex(q_address)
+	if err != nil {
+		ta.l.Printf("failed to AccAddressFromHex : %s", err)
+		return
+	}
+
+	utils.Respond(rw, acc)
+}
+
+func (ta *TwoAuth) GetEthByHalle(rw http.ResponseWriter, r *http.Request) {
+
+	var q_address string
+	if len(r.URL.Query()["address"]) > 0 {
+		q_address = r.URL.Query()["address"][0]
+	} else {
+		//address 为必填项
+		errors.ErrInvalidFormat(rw, http.StatusBadRequest)
+		return
+	}
+
+	addr, err := sdk.AccAddressFromBech32(q_address)
+	if err != nil {
+		ta.l.Printf("failed to AccAddressFromBech32 : %s", err)
+		return
+	}
+	address := ethcmn.BytesToAddress(addr.Bytes())
+	utils.Respond(rw, address)
 }

@@ -4,6 +4,7 @@ go 1.13
 
 require (
 	github.com/binance-chain/go-sdk v1.2.2
+	github.com/ethereum/go-ethereum v1.9.24
 	github.com/go-pg/pg v8.0.6+incompatible
 	github.com/go-resty/resty/v2 v2.2.0
 	github.com/gorilla/mux v1.7.3
@@ -14,6 +15,7 @@ require (
 	github.com/stretchr/testify v1.4.0 // indirect
 	github.com/tendermint/go-amino v0.15.1
 	github.com/tendermint/tendermint v0.32.3
-	golang.org/x/sys v0.0.0-20190813064441-fde4db37ae7a // indirect
 	mellium.im/sasl v0.2.1 // indirect
 )
+
+replace github.com/binance-chain/go-sdk => github.com/wade-liwei/go-sdk v1.2.20

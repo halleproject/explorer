@@ -93,6 +93,9 @@ func main() {
 	getR.HandleFunc("/two_auth/auth", handlers.NewTwoAuth(l, client, db).Auth)
 	getR.HandleFunc("/two_auth/generateDCI", handlers.NewTwoAuth(l, client, db).GenerateForDCI)
 	getR.HandleFunc("/two_auth/authDCI", handlers.NewTwoAuth(l, client, db).AuthForDCI)
+	getR.HandleFunc("/two_auth/authDCI", handlers.NewTwoAuth(l, client, db).AuthForDCI)
+	getR.HandleFunc("/get_halle_by_eth/", handlers.NewTwoAuth(l, client, db).GetHalleByEth)
+	getR.HandleFunc("/get_eth_by_halle/", handlers.NewTwoAuth(l, client, db).GetEthByHalle)
 
 	getR.HandleFunc("/app_version/set", handlers.NewAppVersion(l, client, db).SetVersion)
 	getR.HandleFunc("/app_version/get", handlers.NewAppVersion(l, client, db).GetVersion)
