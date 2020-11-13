@@ -277,6 +277,10 @@ func (ta *TwoAuth) GetHalleByEth(rw http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if len(q_address) == 66 {
+		q_address = q_address[1:]
+	}
+
 	acc, err := sdk.AccAddressFromHex(q_address)
 	if err != nil {
 		ta.l.Printf("failed to AccAddressFromHex : %s", err)
