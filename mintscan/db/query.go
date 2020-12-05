@@ -245,12 +245,12 @@ func (db *Database) QueryTxsByAddress(q_address string, q_addressContract string
 	return txs, nil
 }
 
-func (db *Database) QueryHaleTxsByContractAddress(q_address string, before int, before int, limit int) ([]schema.Transaction, error) {
+func (db *Database) QueryHaleTxsByContractAddress(q_address string, before int, after int, limit int) ([]schema.Transaction, error) {
 	txs := make([]schema.Transaction, 0)
 
 	var err error
 
-	fmt.Printf("q_address: %s before: %d after: %d limit: %d\n", q_address, before, before, limit)
+	fmt.Printf("q_address: %s before: %d after: %d limit: %d\n", q_address, before, after, limit)
 
 	switch {
 	case before > 0:
