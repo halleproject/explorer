@@ -186,25 +186,27 @@ func (db *Database) QueryTxByHash(hash string) (schema.Transaction, error) {
 func (db *Database) QueryTxsByAddress(q_address string, q_addressContract string, before int, after int, limit int) ([]schema.Transaction, error) {
 	txs := make([]schema.Transaction, 0)
 
+	fmt.Printf("QueryTxsByAddress: q_address %v q_addressContract: %v before: %v after: %v limit: %v \n", q_address, q_addressContract, before, after, limit)
+
 	var err error
 
 	if q_addressContract == "" {
 		switch {
 		case before > 0:
 			err = db.Model(&txs).
-				Where("(from_address = ? OR to_address = ?) AND id < ?  And to_address != 'not_erc20_method' and contract_address='' ", q_address, q_address, before).
+				Where("(from_address = ? OR to_address = ?) AND id < ?  And to_address != 'not_erc20_method' and contract_address is null ", q_address, q_address, before).
 				Limit(limit).
 				Order("id DESC").
 				Select()
 		case after >= 0:
 			err = db.Model(&txs).
-				Where("(from_address = ? OR to_address = ?) AND id > ?  And  to_address != 'not_erc20_method' and contract_address='' ", q_address, q_address, after).
+				Where("(from_address = ? OR to_address = ?) AND id > ?  And  to_address != 'not_erc20_method' and contract_address is null", q_address, q_address, after).
 				Limit(limit).
 				Order("id ASC").
 				Select()
 		default:
 			err = db.Model(&txs).
-				Where("(from_address = ? OR to_address=?)  And to_address != 'not_erc20_method' and contract_address='' ", q_address, q_address).
+				Where("(from_address = ? OR to_address=?)  And to_address != 'not_erc20_method' and contract_address is null ", q_address, q_address).
 				Limit(limit).
 				Order("id DESC").
 				Select()
