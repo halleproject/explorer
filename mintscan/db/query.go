@@ -255,23 +255,44 @@ func (db *Database) QueryHaleTxsByContractAddress(q_address string, before int, 
 	switch {
 	case before > 0:
 		err = db.Model(&txs).
-			Where("from_address = ? OR to_address = ? AND contract_address = '' AND id < ?", q_address, q_address, before).
+			Where("(from_address = ? OR to_address = ?) AND contract_address = '' AND id < ?", q_address, q_address, before).
 			Limit(limit).
 			Order("id DESC").
 			Select()
 	case after >= 0:
 		err = db.Model(&txs).
-			Where("from_address = ? OR to_address = ? AND contract_address = '' AND id > ?", q_address, q_address, after).
+			Where("(from_address = ? OR to_address = ?) AND contract_address = '' AND id > ?", q_address, q_address, after).
 			Limit(limit).
 			Order("id ASC").
 			Select()
 	default:
 		err = db.Model(&txs).
-			Where("from_address = ? OR to_address=?  AND contract_address = '' ", q_address, q_address).
+			Where("(from_address = ? OR to_address=?)  AND contract_address = '' ", q_address, q_address).
 			Limit(limit).
 			Order("id DESC").
 			Select()
 	}
+
+	// switch {
+	// case before > 0:
+	// 	err = db.Model(&txs).
+	// 		Where("from_address = ? OR to_address = ? AND contract_address = '' AND id < ?", q_address, q_address, before).
+	// 		Limit(limit).
+	// 		Order("id DESC").
+	// 		Select()
+	// case after >= 0:
+	// 	err = db.Model(&txs).
+	// 		Where("from_address = ? OR to_address = ? AND contract_address = '' AND id > ?", q_address, q_address, after).
+	// 		Limit(limit).
+	// 		Order("id ASC").
+	// 		Select()
+	// default:
+	// 	err = db.Model(&txs).
+	// 		Where("from_address = ? OR to_address=?  AND contract_address = '' ", q_address, q_address).
+	// 		Limit(limit).
+	// 		Order("id DESC").
+	// 		Select()
+	// }
 
 	if err == pg.ErrNoRows {
 		return txs, fmt.Errorf("no rows in Transaction table: %s", err)
