@@ -192,19 +192,19 @@ func (db *Database) QueryTxsByAddress(q_address string, q_addressContract string
 		switch {
 		case before > 0:
 			err = db.Model(&txs).
-				Where("(from_address = ? OR to_address = ?) AND id < ?  And to_address != 'not_erc20_method' and contract_address='' ", q_address, q_address, before).
+				Where("from_address = ? OR to_address = ? AND id < ?  And to_address != 'not_erc20_method' and contract_address='' ", q_address, q_address, before).
 				Limit(limit).
 				Order("id DESC").
 				Select()
 		case after >= 0:
 			err = db.Model(&txs).
-				Where("(from_address = ? OR to_address = ? )AND id > ?  And  to_address != 'not_erc20_method' and contract_address='' ", q_address, q_address, after).
+				Where("from_address = ? OR to_address = ? AND id > ?  And  to_address != 'not_erc20_method' and contract_address='' ", q_address, q_address, after).
 				Limit(limit).
 				Order("id ASC").
 				Select()
 		default:
 			err = db.Model(&txs).
-				Where("(from_address = ? OR to_address=? ) And to_address != 'not_erc20_method' and contract_address='' ", q_address, q_address).
+				Where("from_address = ? OR to_address=?  And to_address != 'not_erc20_method' and contract_address='' ", q_address, q_address).
 				Limit(limit).
 				Order("id DESC").
 				Select()
